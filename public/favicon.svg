@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <clipPath id="crop"><circle cx="32" cy="32" r="30"/></clipPath>
+  <image href="/pfp.jpg" x="0" y="-12" width="85.3" height="113.8" preserveAspectRatio="none" clip-path="url(#crop)"/>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#8B6173" stroke-width="2"/>
+</svg>

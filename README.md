@@ -1,15 +1,6 @@
 # Portfolio
 
-A static-first Nuxt portfolio for a backend-focused software engineer interested in systems architecture, AI workflows, frontend delivery, and DevOps.
-
-## Start locally
-
-Install Node.js 22+ and run:
-
-```sh
-npm install
-npm run dev
-```
+A static-first Nuxt portfolio.
 
 ## Docker
 
@@ -19,7 +10,7 @@ Docker is the recommended local setup in this workspace because Node is not inst
 docker compose up portfolio
 ```
 
-Open http://localhost:3000. The source directory is mounted for hot reload; dependencies live in a Docker volume rather than on the host.
+Open http://localhost:3000.
 
 To validate the production static build locally:
 

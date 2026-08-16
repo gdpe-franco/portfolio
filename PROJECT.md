@@ -17,15 +17,15 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 
 ## Initial scope
 
-- Single-page landing page with an animated CSS aurora.
+- Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface.
 - Light and dark mode with the preference stored in the browser.
-- Sections for selected work, working style, and contact.
+- Sections for presentation and mission, about, experience, selected projects, technologies, and contact.
 - Static Nuxt output suitable for Cloudflare Pages.
 
 ## Deferred until content is ready
 
 - Resume, blog, analytics, contact form backend, and CMS.
-- Project screenshots and architecture diagrams.
+- Project screenshots and architecture diagrams. A real portrait, CV PDF, GitHub profile URL, Discord profile URL, and exact employer history still need to be supplied.
 - Any paid Cloudflare product.
 
 ## Deployment target

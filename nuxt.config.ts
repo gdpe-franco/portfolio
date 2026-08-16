@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     head: {
       title: 'Guada Franco — Software Engineer',
       meta: [{ name: 'description', content: 'Backend software engineer focused on systems architecture and AI workflows.' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
 })
