@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   app: {
     head: {
-      title: 'Guada Franco — Software Engineer',
-      meta: [{ name: 'description', content: 'Backend software engineer focused on systems architecture and AI workflows.' }],
+      title: 'Guadalupe FR',
+      meta: [{ name: 'description', content: 'Software engineer focused on systems architecture and AI workflows.' }],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },
   },
