@@ -9,6 +9,13 @@ const me = {
   github: 'https://github.com/gdpe-franco'
 }
 
+const services = [
+  { name: 'APIs & integrations', level: 'Primary focus', text: 'Connect e-commerce, payment, shipping, invoicing, and internal systems with dependable APIs and webhooks.' },
+  { name: 'Automation & data', level: 'Focused offer', text: 'Turn repetitive reporting, CSV, spreadsheet, and data-cleanup work into simpler, repeatable processes.' },
+  { name: 'Backend & web systems', level: 'Primary focus', text: 'Improve existing Laravel/PHP applications, APIs, and internal software with features that make daily work easier.' },
+  { name: 'Custom tools & AI', level: 'Focused offer', text: 'Build focused internal tools and practical AI-assisted workflows for a specific business need.' },
+]
+
 const experienceStart = new Date(2022, 10, 21)
 const experienceDuration = computed(() => {
   const now = new Date()
@@ -115,6 +122,7 @@ function toggleTheme() {
     <nav class="nav wrap" aria-label="Main navigation">
       <a class="wordmark" href="#top" aria-label="Home">GF<span>.</span></a>
       <div class="nav-actions">
+        <a href="#services">Services</a>
         <a href="#work">My work</a>
         <a href="#contact">Contact me</a>
         <button class="theme-toggle" type="button" :aria-label="`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`" @click="toggleTheme">
@@ -129,7 +137,7 @@ function toggleTheme() {
         <h1>hey, I’m Guada<span>.</span></h1>
         <p class="intro">I’m an engineer who enjoys understanding systems in context: the custom workflows behind them and the people who rely on them. I build reliable software that fits the way work actually happens and makes it simpler.</p>
         <div class="inline-actions">
-          <a class="button" href="#contact">For projects →</a>
+          <a class="button" href="#services">For projects →</a>
           <a class="quiet-button" href="/resume.pdf">View resume →</a>
         </div>
         <div class="mission">
@@ -186,6 +194,18 @@ function toggleTheme() {
             <div class="project-stack"><span v-for="[name, icon] in project.stack" :key="name"><img :src="`https://cdn.simpleicons.org/${icon}`" :alt="`${name} logo`">{{ name }}</span></div>
             <a class="project-repo" :href="project.repo" target="_blank" rel="noreferrer">GitHub repository ↗</a>
           </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="section wrap">
+      <h2>Services<span>.</span></h2>
+      <p class="section-intro">I take on focused work involving integrations, automation, backend systems, and internal tools.</p>
+      <div class="services">
+        <article v-for="service in services" :key="service.name" class="service-card">
+          <p class="service-level">{{ service.level }}</p>
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.text }}</p>
         </article>
       </div>
     </section>
