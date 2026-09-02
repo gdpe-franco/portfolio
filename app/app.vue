@@ -1,19 +1,24 @@
 <script setup lang="ts">
 const theme = ref<'light' | 'dark'>('dark')
+const hasReachedAbout = ref(false)
+const aboutSection = ref<HTMLElement | null>(null)
 const auroraCanvas = ref<HTMLCanvasElement | null>(null)
 let auroraFrame = 0
 let removeAuroraResize = () => {}
+let removeHeaderScroll = () => {}
 const me = {
-  name: 'Guadalupe Franco',
+  name: 'Guada Franco',
   email: 'franco.rguadalupe@gmail.com',
   github: 'https://github.com/gdpe-franco'
 }
 
+const projectInquiry = `mailto:${me.email}?subject=${encodeURIComponent('Project inquiry')}`
+
 const services = [
-  { name: 'APIs & integrations', level: 'Primary focus', text: 'Connect e-commerce, payment, shipping, invoicing, and internal systems with dependable APIs and webhooks.' },
-  { name: 'Automation & data', level: 'Focused offer', text: 'Turn repetitive reporting, CSV, spreadsheet, and data-cleanup work into simpler, repeatable processes.' },
-  { name: 'Backend & web systems', level: 'Primary focus', text: 'Improve existing Laravel/PHP applications, APIs, and internal software with features that make daily work easier.' },
-  { name: 'Custom tools & AI', level: 'Focused offer', text: 'Build focused internal tools and practical AI-assisted workflows for a specific business need.' },
+  { name: 'APIs & integrations', level: 'Primary focus', text: 'Connect e-commerce, payment, shipping, invoicing, and internal systems through APIs and webhooks.' },
+  { name: 'Automation & data', level: 'Focused offer', text: 'Automate repetitive reporting, CSV, spreadsheet, and data-cleanup tasks.' },
+  { name: 'Backend & web systems', level: 'Primary focus', text: 'Add features and maintain Laravel/PHP applications, APIs, and internal software.' },
+  { name: 'Custom tools & AI', level: 'Focused offer', text: 'Build small internal tools and practical AI-assisted workflows for specific needs.' },
 ]
 
 const experienceStart = new Date(2022, 10, 21)
@@ -27,10 +32,10 @@ const experienceDuration = computed(() => {
 })
 
 const projects = [
-  { kind: 'Backend / Full-stack', name: 'Book Management System', text: 'A local book management dashboard with role-based access, immutable audit history, and live notifications.', repo: 'https://github.com/gdpe-franco/book-management-system', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['TypeScript', 'typescript'], ['Redis', 'redis']] },
-  { kind: 'Backend / Integrations', name: 'CFDI 4.0 Generator', text: 'A Laravel technical test that converts structured JSON into validated CFDI 4.0 XML.', repo: 'https://github.com/gdpe-franco/cfdi-4-generator', stack: [['Laravel', 'laravel'], ['PHP', 'php'], ['Docker', 'docker']] },
-  { kind: 'Geospatial data', name: 'Geographical Keys', text: 'A public application for browsing Mexico’s federal entities and municipalities using the INEGI Geo Catalog.', repo: 'https://github.com/gdpe-franco/geostatistical-keys', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['MySQL', 'mysql'], ['Docker', 'docker']] },
-  { kind: 'Creative tooling', name: 'Cat Gesture Meme Tracker', text: 'A browser app that uses MediaPipe to show a cat reaction for each detected gesture.', repo: 'https://github.com/gdpe-franco/gesture-meme-tracker', stack: [['JavaScript', 'javascript'], ['MediaPipe', 'mediapipe'], ['Docker', 'docker']] },
+  { kind: 'Internal tool', name: 'Book Management System', text: 'A local dashboard for managing books and their changes, with role-based access, immutable audit history, and live notifications.', repo: 'https://github.com/gdpe-franco/book-management-system', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['TypeScript', 'typescript'], ['Redis', 'redis']] },
+  { kind: 'Integration & document processing', name: 'CFDI 4.0 Generator', text: 'A public Laravel project that converts structured invoice data into validated CFDI 4.0 XML.', repo: 'https://github.com/gdpe-franco/cfdi-4-generator', stack: [['Laravel', 'laravel'], ['PHP', 'php'], ['Docker', 'docker']] },
+  { kind: 'Public data application', name: 'Geographical Keys', text: 'A public application for browsing INEGI’s catalogue of Mexican federal entities and municipalities.', repo: 'https://github.com/gdpe-franco/geostatistical-keys', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['MySQL', 'mysql'], ['Docker', 'docker']] },
+  { kind: 'Experiment', name: 'Cat Gesture Meme Tracker', text: 'A browser experiment that uses MediaPipe to respond to detected hand gestures with cat reactions.', repo: 'https://github.com/gdpe-franco/gesture-meme-tracker', stack: [['JavaScript', 'javascript'], ['MediaPipe', 'mediapipe'], ['Docker', 'docker']] },
 ]
 
 const technologies = [
@@ -38,13 +43,18 @@ const technologies = [
 ]
 
 const experiences = [
-  { role: 'Software Engineer', company: 'MedTrainer', url: 'https://medtrainer.com/', period: 'Sep 2025 – Jul 2026', workMode: 'Remote', location: 'Querétaro, México', summary: 'Shipped Symfony features and APIs end to end for a SaaS platform serving 8,000+ organizations, while contributing technical proposals and long-term platform improvements.', tags: ['Symfony', 'APIs', 'MCP + OpenAI'] },
-  { role: 'Full-Stack Developer', company: 'Mienvío', url: 'https://www.mienvio.mx/', period: 'Aug 2023 – Sep 2025', workMode: 'Remote', location: 'Monterrey, México', summary: 'Built Laravel applications, Go and Python microservices, and internal Vue tooling for a logistics platform used by 1,000+ active merchants.', tags: ['Laravel', 'Go + Python', 'Vue.js', 'Integrations'] },
-  { role: 'Web Developer Intern', company: 'Universidad Politécnica de Querétaro', url: 'https://www.upq.mx/#/', period: '2022 – 2023', workMode: 'On-site', location: 'Querétaro, México', summary: 'Supported system analysis, UI implementation, backend APIs, and documentation—the foundations of how I learned to make software easier to maintain.', tags: ['Laravel', 'PrimeVue', 'UML'] },
+  { role: 'Software Engineer', company: 'MedTrainer', url: 'https://medtrainer.com/', period: 'Sep 2025 – Jul 2026', workMode: 'Remote', location: 'Querétaro, México', summary: 'Built Symfony features and APIs for a SaaS platform used by 8,000+ organizations. Contributed technical proposals, production support, and an internal MCP integration using OpenAI’s Responses API.', tags: ['Symfony', 'APIs', 'MCP + OpenAI'] },
+  { role: 'Full-Stack Developer', company: 'Mienvío', url: 'https://www.mienvio.mx/', period: 'Aug 2023 – Sep 2025', workMode: 'Remote', location: 'Monterrey, México', summary: 'Built Laravel applications, Go and Python microservices, and Vue internal tools for a logistics platform used by 1,000+ active merchants. Worked on marketplace and carrier integrations, SAML SSO, and billing reports.', tags: ['Laravel', 'Go + Python', 'Vue.js', 'Integrations'] },
+  { role: 'Web Developer Intern', company: 'Universidad Politécnica de Querétaro', url: 'https://www.upq.mx/#/', period: '2022 – 2023', workMode: 'On-site', location: 'Querétaro, México', summary: 'Worked on system analysis, UI implementation, Laravel APIs, and documentation.', tags: ['Laravel', 'PrimeVue', 'UML'] },
 ]
 
 onMounted(() => {
   theme.value = localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+  const updateHeader = () => { hasReachedAbout.value = (aboutSection.value?.getBoundingClientRect().top ?? 1) <= 0 }
+  updateHeader()
+  window.addEventListener('scroll', updateHeader, { passive: true })
+  removeHeaderScroll = () => window.removeEventListener('scroll', updateHeader)
+
   const canvas = auroraCanvas.value
   const context = canvas?.getContext('2d')
   if (!canvas || !context) return
@@ -103,6 +113,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   cancelAnimationFrame(auroraFrame)
   removeAuroraResize()
+  removeHeaderScroll()
 })
 
 watch(theme, (value) => {
@@ -119,12 +130,13 @@ function toggleTheme() {
     <div class="grain" aria-hidden="true" />
     <canvas ref="auroraCanvas" class="aurora" aria-hidden="true" />
 
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="wordmark" href="#top" aria-label="Home">GF<span>.</span></a>
+    <nav class="nav wrap" :class="{ 'is-scrolled': hasReachedAbout }" aria-label="Main navigation">
+      <a class="wordmark" href="#" aria-label="Home">GF<span>.</span></a>
       <div class="nav-actions">
+        <a href="#experience">Experience</a>
+        <a href="#work">Projects</a>
         <a href="#services">Services</a>
-        <a href="#work">My work</a>
-        <a href="#contact">Contact me</a>
+        <a href="#contact">Contact</a>
         <button class="theme-toggle" type="button" :aria-label="`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`" @click="toggleTheme">
           {{ theme === 'dark' ? '☼' : '◐' }}
         </button>
@@ -146,11 +158,11 @@ function toggleTheme() {
         </div>
       </div>
       <div class="portrait">
-        <img src="/pfp.jpg" alt="Guadalupe Franco" />
+        <img src="/pfp.jpg" alt="Guada Franco" />
       </div>
     </section>
 
-    <section id="about" class="section wrap about">
+    <section id="about" ref="aboutSection" class="section wrap about">
       <div class="about-copy">
         <h2>About me<span>.</span></h2>
         <p>My work spans user-facing interfaces, APIs, data, and the practical details that make a product work well as a whole. I build integrations and internal tools that support daily work.</p>
@@ -158,7 +170,6 @@ function toggleTheme() {
         <p>On a normal workday I use AI agents, MCP servers, and coding assistants for research, prototyping, and routine development tasks. I find this new wave of tools fascinating.</p>
         <div class="inline-actions">
           <a class="button" :href="me.github" target="_blank" rel="noreferrer">◉ View my GitHub →</a>
-          <a class="quiet-button" :href="`mailto:${me.email}`">Contact me →</a>
         </div>
       </div>
       <div class="stats" aria-label="Portfolio highlights">
@@ -168,7 +179,7 @@ function toggleTheme() {
 
     <section id="experience" class="section wrap">
       <h2>Experience<span>.</span></h2>
-      <p class="section-intro">A short version of the places and projects that have helped shape how I build software.</p>
+      <p class="section-intro">Professional experience across SaaS, logistics, integrations, and internal tools.</p>
       <div class="experience-list">
         <article v-for="experience in experiences" :key="experience.company" class="experience-card">
           <div class="experience-heading">
@@ -183,8 +194,8 @@ function toggleTheme() {
     </section>
 
     <section id="work" class="section wrap">
-      <h2>Featured projects<span>.</span></h2>
-      <p class="section-intro">A selection of projects involving business workflows, integrations, data, and small experiments.</p>
+      <h2>Selected projects<span>.</span></h2>
+      <p class="section-intro">Public work that shows how I approach internal tools, integrations, and data. My professional experience is described separately in the <a class="section-link" href="#experience">Experience</a> section.</p>
       <div class="projects">
         <article v-for="project in projects" :key="project.name" class="project-card">
           <div class="project-copy">
@@ -219,11 +230,10 @@ function toggleTheme() {
     </section>
 
     <section id="contact" class="section wrap contact">
-      <h2>Contact me<span>.</span></h2>
-      <p class="section-intro">If you think I could help with a backend, integration, or product problem, feel free to reach out.</p>
+      <h2>Contact<span>.</span></h2>
+      <p class="section-intro">Have a project in mind, or want to talk about working together?</p>
       <div class="contact-actions">
-        <a class="button" :href="`mailto:${me.email}`">@ Email →</a>
-        <a class="quiet-button" href="https://discord.com" target="_blank" rel="noreferrer">◉ Discord →</a>
+        <a class="button" :href="projectInquiry">Discuss a project →</a>
       </div>
     </section>
 

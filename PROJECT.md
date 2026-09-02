@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A personal portfolio for a backend-focused software engineer expanding into systems architecture, AI workflows, frontend delivery, and practical DevOps.
+A personal portfolio for a full-stack software engineer and independent developer. It should serve prospective clients and full-time recruiters through one clear professional identity.
 
 ## Direction
 
@@ -11,6 +11,7 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 ## Product principles
 
 - Lead with backend systems and outcomes, not a list of tools.
+- Present client services alongside recruiter-friendly experience and public project proof, without splitting the site into separate brands or journeys.
 - Explain architecture decisions and trade-offs in selected case studies.
 - Keep motion restrained, performant, and optional for people who prefer reduced motion.
 - Ship as a static site first. Do not add a backend without a concrete need.
@@ -19,7 +20,7 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 
 - Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface.
 - Light and dark mode with the preference stored in the browser.
-- Sections for presentation and mission, about, experience, selected projects, technologies, and contact.
+- Sections for presentation and mission, about, experience, selected projects, services, technologies, and contact.
 - Static Nuxt output suitable for Cloudflare Pages.
 
 ## Deferred until content is ready
