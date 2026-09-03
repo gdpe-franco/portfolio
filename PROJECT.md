@@ -31,3 +31,5 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 ## Deployment target
 
 Cloudflare Pages Free. The site should remain static unless a dynamic capability is explicitly justified.
+
+Cloudflare Pages deploys production through Git integration from protected `main`. GitHub Actions validates pull requests but does not deploy or hold Cloudflare credentials. Preview deployments are for review and should be protected with Cloudflare Access.
