@@ -20,6 +20,14 @@ docker compose up --build preview
 
 Open http://localhost:8080.
 
+## Quality checks
+
+```sh
+npm run check
+```
+
+This runs linting, type checking, and static generation. The production Docker build runs the same command from a clean dependency install.
+
 ## Build for Cloudflare Pages
 
 ```sh

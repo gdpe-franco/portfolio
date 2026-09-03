@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-RUN npm run generate
+RUN npm run check
 
 FROM nginx:1.29-alpine
 
