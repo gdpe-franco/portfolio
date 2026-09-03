@@ -1,8 +1,12 @@
-# Portfolio
+# Guada Franco Portfolio
 
-A static-first Nuxt portfolio.
+A static-first portfolio for Guada Franco, a full-stack software engineer and independent developer.
 
-## Docker
+## Technology
+
+Nuxt, Vue, TypeScript, and CSS. The site generates static output for Cloudflare Pages.
+
+## Local development
 
 Docker is the recommended local setup in this workspace because Node is not installed on the host.
 
@@ -28,15 +32,10 @@ npm run check
 
 This runs linting, type checking, and static generation. The production Docker build runs the same command from a clean dependency install.
 
-## Build for Cloudflare Pages
+GitHub Actions runs the same checks for pull requests to `main` and for merged changes on `main`.
 
-```sh
-npm run generate
-```
+## Deployment
 
-Connect this repository in Cloudflare Pages with:
-
-- Build command: `npm run generate`
-- Build output directory: `.output/public`
+Cloudflare Pages deploys the static output through Git integration. CI validates changes before they merge into protected `main`.
 
 For the project context, intended experience, and deferred scope, see [PROJECT.md](PROJECT.md). For contribution guidance, see [AGENTS.md](AGENTS.md).
