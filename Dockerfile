@@ -1,6 +1,7 @@
 FROM node:22-alpine AS build
 
 WORKDIR /app
+RUN apk add --no-cache graphviz openjdk17-jre plantuml
 COPY package*.json ./
 RUN npm ci
 COPY . .

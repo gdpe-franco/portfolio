@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
+  nitro: {
+    prerender: {
+      routes: ['/projects/cfdi-4-generator', '/projects/book-management-system', '/projects/geographical-keys'],
+    },
+  },
   app: {
     head: {
       title: 'Guada Franco · Full-Stack Software Engineer',

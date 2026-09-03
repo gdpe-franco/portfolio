@@ -1,0 +1,32 @@
+@startuml
+!ifdef DARK_THEME
+!include themes/theme-dark.puml
+!else
+!include themes/theme-light.puml
+!endif
+
+title CFDI 4.0 Generator: local document path
+top to bottom direction
+skinparam nodesep 45
+skinparam ranksep 55
+
+actor "Operator" as operator
+artifact "Invoice JSON\n<<Input>>" as input
+component "Artisan command\n<<Application>>" as command
+component "Validation\n<<Input and SAT catalogue>>" as validation
+component "Amount calculation\n<<BCMath>>" as calculation
+component "XML builder\n<<DOMDocument>>" as builder
+artifact "CFDI 4.0 XML\n<<Output>>" as output
+component "Local XSD validation\n<<Validation>>" as xsd
+component "CfdiUtils checks\n<<Advisory>>" as checks
+
+operator --> command : runs
+input --> command : reads
+command --> validation : checks
+command --> calculation : calculates
+validation --> builder : valid input
+calculation --> builder : totals
+builder --> output : writes
+output --> xsd : validates
+xsd --> checks : checks structure
+@enduml

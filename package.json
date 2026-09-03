@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
-    "check": "npm run lint && npm run typecheck && npm run generate"
+    "check": "npm run lint && npm run typecheck && npm run generate",
+    "render:diagrams": "rm -rf public/diagrams && mkdir -p public/diagrams/light public/diagrams/dark && plantuml -nometadata -tsvg -o ../public/diagrams/light diagrams/*.puml && plantuml -nometadata -DDARK_THEME=1 -tsvg -o ../public/diagrams/dark diagrams/*.puml"
   },
   "dependencies": {
     "nuxt": "^4.5.2",

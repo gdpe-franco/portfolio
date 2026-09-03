@@ -20,13 +20,14 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 
 - Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface.
 - Light and dark mode with the preference stored in the browser.
-- Sections for presentation and mission, about, experience, selected projects, services, technologies, and contact.
+- Sections for presentation and mission, about, experience, selected projects, a small experiment, services, technologies, and contact.
+- Formal UML component diagrams are authored in PlantUML and rendered to static, theme-specific SVG during the build. They remain concise technical-design content, not exhaustive architecture documentation.
 - Static Nuxt output suitable for Cloudflare Pages.
 
 ## Deferred until content is ready
 
 - Resume, blog, analytics, contact form backend, and CMS.
-- Project screenshots and architecture diagrams. A real portrait, CV PDF, GitHub profile URL, Discord profile URL, and exact employer history still need to be supplied.
+- Project screenshots. A real portrait, CV PDF, GitHub profile URL, Discord profile URL, and exact employer history still need to be supplied.
 - Any paid Cloudflare product.
 
 ## Deployment target

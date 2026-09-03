@@ -1,0 +1,23 @@
+skinparam backgroundColor transparent
+skinparam defaultFontName "IBM Plex Mono"
+skinparam defaultFontSize 12
+skinparam TitleFontColor #171716
+skinparam shadowing false
+skinparam roundcorner 6
+skinparam ArrowColor #676665
+skinparam ArrowFontColor #676665
+skinparam ComponentBackgroundColor #e8e5df
+skinparam ComponentBorderColor #676665
+skinparam ComponentFontColor #171716
+skinparam DatabaseBackgroundColor #eee6ea
+skinparam DatabaseBorderColor #8B6173
+skinparam DatabaseFontColor #171716
+skinparam QueueBackgroundColor #eee6ea
+skinparam QueueBorderColor #8B6173
+skinparam QueueFontColor #171716
+skinparam ActorBackgroundColor #f2f0eb
+skinparam ActorBorderColor #8B6173
+skinparam ActorFontColor #171716
+skinparam ArtifactBackgroundColor #e8e5df
+skinparam ArtifactBorderColor #676665
+skinparam ArtifactFontColor #171716
