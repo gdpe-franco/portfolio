@@ -18,20 +18,21 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 
 ## Initial scope
 
-- Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface.
+- Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface, plus dedicated static project pages.
 - Light and dark mode with the preference stored in the browser.
 - Sections for presentation and mission, about, experience, selected projects, a small experiment, services, technologies, and contact.
+- Published CV and direct paths to GitHub, LinkedIn, and email.
 - Formal UML component diagrams are authored in PlantUML and rendered to static, theme-specific SVG during the build. They remain concise technical-design content, not exhaustive architecture documentation.
 - Static Nuxt output suitable for Cloudflare Pages.
 
 ## Deferred until content is ready
 
-- Resume, blog, analytics, contact form backend, and CMS.
-- Project screenshots. A real portrait, CV PDF, GitHub profile URL, Discord profile URL, and exact employer history still need to be supplied.
+- Blog, analytics, contact form backend, and CMS.
+- Project screenshots.
 - Any paid Cloudflare product.
 
 ## Deployment target
 
 Cloudflare Pages Free. The site should remain static unless a dynamic capability is explicitly justified.
 
-Cloudflare Pages deploys production through Git integration from protected `main`. GitHub Actions validates pull requests but does not deploy or hold Cloudflare credentials. Preview deployments are for review and should be protected with Cloudflare Access.
+Cloudflare Pages deploys production through Git integration from protected `main`. GitHub Actions validates pull requests but does not deploy or hold Cloudflare credentials. Automatic preview deployments are disabled; development branches are reviewed locally.
