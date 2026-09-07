@@ -1,0 +1,30 @@
+@startuml
+!ifdef DARK_THEME
+!include themes/theme-dark.puml
+!else
+!include themes/theme-light.puml
+!endif
+
+title Book Management System: change and audit path
+top to bottom direction
+skinparam nodesep 45
+skinparam ranksep 60
+
+actor "Authorized user" as user
+component "Vue dashboard\n<<Client>>" as dashboard
+component "Laravel API\n<<Application>>" as api
+database "Books\n<<MySQL>>" as books
+queue "Book changes\n<<Redis Streams>>" as stream
+component "Audit service\n<<Node.js / TypeScript>>" as audit
+database "Audit history\n<<MySQL>>" as history
+
+user --> dashboard : manages books
+dashboard --> api : HTTPS request
+dashboard --> audit : audit history
+api --> books : persists change
+api --> stream : publishes event
+stream --> audit : consumes event
+audit --> api : validates bearer token
+audit --> history : records audit entry
+audit --> dashboard : Socket.IO event
+@enduml

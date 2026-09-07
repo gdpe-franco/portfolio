@@ -1,0 +1,29 @@
+@startuml
+!ifdef DARK_THEME
+!include themes/theme-dark.puml
+!else
+!include themes/theme-light.puml
+!endif
+
+title Geographical Keys: catalogue and browsing path
+top to bottom direction
+skinparam nodesep 45
+skinparam ranksep 60
+
+actor "Visitor" as visitor
+component "Vue data table\n<<Client>>" as table
+component "Laravel API\n<<Application>>" as api
+component "State importer\n<<Artisan command>>" as importer
+database "Federal entities\n<<MySQL>>" as states
+component "Municipality service\n<<Application service>>" as municipalities
+component "INEGI Geo Catalog\n<<External API>>" as inegi
+
+inegi --> importer : state catalogue
+importer --> states : upserts states
+visitor --> table : browses catalogue
+table --> api : requests data
+api --> states : reads states
+api --> municipalities : selected state
+municipalities --> inegi : requests municipalities
+api --> table : states and municipalities
+@enduml

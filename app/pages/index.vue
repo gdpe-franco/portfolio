@@ -1,43 +1,56 @@
 <script setup lang="ts">
+const { messages, localizedPath } = useSiteLocale()
+const copy = computed(() => messages.value.copy)
+useLocalizedMetadata(computed(() => messages.value.metadata.homeTitle), computed(() => messages.value.metadata.homeDescription))
+
 const theme = ref<'light' | 'dark'>('dark')
+const menuOpen = ref(false)
+const hasReachedAbout = ref(false)
+const aboutSection = ref<HTMLElement | null>(null)
 const auroraCanvas = ref<HTMLCanvasElement | null>(null)
 let auroraFrame = 0
 let removeAuroraResize = () => {}
+let removeHeaderScroll = () => {}
 const me = {
-  name: 'Guadalupe Franco',
+  name: 'Guada Franco',
   email: 'franco.rguadalupe@gmail.com',
-  github: 'https://github.com/gdpe-franco'
+  github: 'https://github.com/gdpe-franco',
+  linkedin: 'https://www.linkedin.com/in/guadalupe-franco/'
 }
 
-const experienceStart = new Date(2022, 1, 23)
+const projectInquiry = `mailto:${me.email}?subject=${encodeURIComponent('Project inquiry')}`
+
+const services = computed(() => messages.value.services)
+
+const experienceStart = new Date(2022, 10, 21)
 const experienceDuration = computed(() => {
   const now = new Date()
   let months = (now.getFullYear() - experienceStart.getFullYear()) * 12 + now.getMonth() - experienceStart.getMonth()
   if (now.getDate() < experienceStart.getDate()) months -= 1
 
   const years = Math.floor(months / 12)
-  return `${years} years, ${months % 12} months`
+  return `${years} ${copy.value.years}, ${months % 12} ${copy.value.months}`
 })
 
-const projects = [
-  { kind: 'Backend / Full-stack', name: 'Book Management System', text: 'A local book management dashboard with role-based access, immutable audit history, and live notifications.', repo: 'https://github.com/gdpe-franco/book-management-system', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['TypeScript', 'typescript'], ['Redis', 'redis']] },
-  { kind: 'Backend / Integrations', name: 'CFDI 4.0 Generator', text: 'A Laravel technical test that converts structured JSON into validated CFDI 4.0 XML.', repo: 'https://github.com/gdpe-franco/cfdi-4-generator', stack: [['Laravel', 'laravel'], ['PHP', 'php'], ['Docker', 'docker']] },
-  { kind: 'Geospatial data', name: 'Geographical Keys', text: 'A public application for browsing Mexico’s federal entities and municipalities using the INEGI Geo Catalog.', repo: 'https://github.com/gdpe-franco/geostatistical-keys', stack: [['Laravel', 'laravel'], ['Vue.js', 'vuedotjs'], ['MySQL', 'mysql'], ['Docker', 'docker']] },
-  { kind: 'Creative tooling', name: 'Cat Gesture Meme Tracker', text: 'A browser app that uses MediaPipe to show a cat reaction for each detected gesture.', repo: 'https://github.com/gdpe-franco/gesture-meme-tracker', stack: [['JavaScript', 'javascript'], ['MediaPipe', 'mediapipe'], ['Docker', 'docker']] },
-]
+const caseStudies = computed(() => messages.value.caseStudies)
+
+const experiments = computed(() => messages.value.experiments)
 
 const technologies = [
-  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Django', 'django'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', 'soapui'], ['Microservices', 'docker'], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', 'phpunit'], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['AI agents', 'openai'], ['MCP', 'openai'], ['Codex', 'openai'], ['Claude Code', 'anthropic'], ['GitHub Copilot', 'githubcopilot'],
+  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Django', 'django'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', ''], ['Microservices', ''], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', ''], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['AI agents', ''], ['MCP', ''], ['Codex', ''], ['Claude Code', ''], ['GitHub Copilot', 'githubcopilot'],
 ]
 
-const experiences = [
-  { role: 'Software Engineer', company: 'MedTrainer', url: 'https://medtrainer.com/', period: 'Sep 2025 – Jul 2026', workMode: 'Remote', location: 'Querétaro, México', summary: 'Shipped Symfony features and APIs end to end for a SaaS platform serving 8,000+ organizations, while contributing technical proposals and long-term platform improvements.', tags: ['Symfony', 'APIs', 'MCP + OpenAI'] },
-  { role: 'Full-Stack Developer', company: 'Mienvío', url: 'https://www.mienvio.mx/', period: 'Aug 2023 – Sep 2025', workMode: 'Remote', location: 'Monterrey, México', summary: 'Built Laravel applications, Go and Python microservices, and internal Vue tooling for a logistics platform used by 1,000+ active merchants.', tags: ['Laravel', 'Go + Python', 'Vue.js', 'Integrations'] },
-  { role: 'Web Developer Intern', company: 'Universidad Politécnica de Querétaro', url: 'https://www.upq.mx/#/', period: '2022 – 2023', workMode: 'On-site', location: 'Querétaro, México', summary: 'Supported system analysis, UI implementation, backend APIs, and documentation—the foundations of how I learned to make software easier to maintain.', tags: ['Laravel', 'PrimeVue', 'UML'] },
-]
+const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', PrimeVue: 'primevue', UML: 'uml' }
+
+const experiences = computed(() => messages.value.experiences)
 
 onMounted(() => {
   theme.value = localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+  const updateHeader = () => { hasReachedAbout.value = (aboutSection.value?.getBoundingClientRect().top ?? 1) <= 0 }
+  updateHeader()
+  window.addEventListener('scroll', updateHeader, { passive: true })
+  removeHeaderScroll = () => window.removeEventListener('scroll', updateHeader)
+
   const canvas = auroraCanvas.value
   const context = canvas?.getContext('2d')
   if (!canvas || !context) return
@@ -61,7 +74,8 @@ onMounted(() => {
 
     hues.forEach((hue, index) => {
       const phase = time / 8500 + index * 1.17
-      const x = width * (.26 + index * .075) + Math.sin(phase) * 62
+      const mobile = width < 701
+      const x = width * (mobile ? .08 + index / (hues.length - 1) * .84 : .26 + index * .075) + Math.sin(phase) * (mobile ? width * .08 : 62)
       const y = 75 + (index % 3) * 48 + Math.cos(phase * 1.35) * 40
       const radius = 215 + Math.sin(phase * 1.7) * 30
 
@@ -96,6 +110,7 @@ onMounted(() => {
 onBeforeUnmount(() => {
   cancelAnimationFrame(auroraFrame)
   removeAuroraResize()
+  removeHeaderScroll()
 })
 
 watch(theme, (value) => {
@@ -105,57 +120,64 @@ watch(theme, (value) => {
 function toggleTheme() {
   theme.value = theme.value === 'dark' ? 'light' : 'dark'
 }
-</script>
+ </script>
 
 <template>
   <main :data-theme="theme">
     <div class="grain" aria-hidden="true" />
     <canvas ref="auroraCanvas" class="aurora" aria-hidden="true" />
 
-    <nav class="nav wrap" aria-label="Main navigation">
-      <a class="wordmark" href="#top" aria-label="Home">GF<span>.</span></a>
-      <div class="nav-actions">
-        <a href="#work">My work</a>
-        <a href="#contact">Contact me</a>
-        <button class="theme-toggle" type="button" :aria-label="`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`" @click="toggleTheme">
+    <nav class="nav wrap" :class="{ 'is-scrolled': hasReachedAbout }" :aria-label="copy.navigation">
+      <a class="wordmark" href="#" :aria-label="copy.home">GF<span>.</span></a>
+      <UButton class="menu-toggle" type="button" color="neutral" variant="ghost" square :aria-expanded="menuOpen" aria-controls="site-navigation" :aria-label="menuOpen ? copy.closeMenu : copy.openMenu" @click="menuOpen = !menuOpen">☰</UButton>
+      <div id="site-navigation" class="nav-actions" :class="{ 'is-open': menuOpen }">
+        <a href="#experience" @click="menuOpen = false">{{ copy.nav[0] }}</a>
+        <a href="#projects" @click="menuOpen = false">{{ copy.nav[1] }}</a>
+        <a href="#services" @click="menuOpen = false">{{ copy.nav[2] }}</a>
+        <a href="#contact" @click="menuOpen = false">{{ copy.nav[3] }}</a>
+        <LanguageSwitcher />
+        <UButton class="theme-toggle" type="button" color="neutral" variant="ghost" square :aria-label="theme === 'dark' ? copy.light : copy.dark" @click="toggleTheme">
           {{ theme === 'dark' ? '☼' : '◐' }}
-        </button>
+        </UButton>
       </div>
     </nav>
 
     <section id="top" class="hero wrap">
       <div class="hero-copy">
-        <h1>hey, I’m Guada<span>.</span></h1>
-        <p class="intro">I build backend systems, integrations, and internal tools for SaaS products. I’m currently learning more about system design and AI-assisted workflows.</p>
+        <p class="eyebrow">{{ copy.role }}</p>
+        <h1>{{ copy.greeting }}<span>.</span></h1>
+        <p class="intro">{{ copy.intro }}</p>
+        <div class="inline-actions">
+          <a class="button" href="#services">{{ copy.projectsCta }}</a>
+          <a class="quiet-button" href="/resume.pdf">{{ copy.resume }}</a>
+        </div>
         <div class="mission">
-          <p class="eyebrow">↗ MY MISSION</p>
-          <p>Build software that supports people’s everyday work and has room to evolve.</p>
+          <p class="eyebrow">{{ copy.drives }}</p>
+          <p>{{ copy.drivesText }}</p>
         </div>
       </div>
       <div class="portrait">
-        <img src="/pfp.jpg" alt="Guadalupe Franco">
+        <img src="/pfp.jpg" :alt="copy.portraitAlt">
       </div>
     </section>
 
-    <section id="about" class="section wrap about">
+    <section id="about" ref="aboutSection" class="section wrap about">
       <div class="about-copy">
-        <h2>About me<span>.</span></h2>
-        <p>I work across backend and frontend, but backend is where I feel most at home. I define APIs, model data, integrate external services, and build interfaces and internal tools that support teams day to day.</p>
-        <p>Most of my backend interest is in background jobs, queues and retries, observability, authentication, and clear service boundaries.</p>
-        <p>On a normal workday I use AI agents, MCP servers, and coding assistants for research, prototyping, and routine development tasks. I’m interested in how they fit into real product workflows.</p>
+        <h2>{{ copy.about }}<span>.</span></h2>
+        <p v-for="paragraph in messages.about" :key="paragraph">{{ paragraph }}</p>
         <div class="inline-actions">
-          <a class="button" :href="me.github" target="_blank" rel="noreferrer">◉ View my GitHub →</a>
-          <a class="quiet-button" :href="`mailto:${me.email}`">Contact me →</a>
+          <a class="quiet-button profile-link" :href="me.github" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.45-1.11-1.45-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.84.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.53 9.53 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg>GitHub</a>
+          <a class="quiet-button profile-link" :href="me.linkedin" target="_blank" rel="noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.56V9h3.56v11.45Z" /></svg>LinkedIn</a>
         </div>
       </div>
-      <div class="stats" aria-label="Portfolio highlights">
-        <article class="stat large-stat"><span>Experience</span><strong>{{ experienceDuration }}<span>.</span></strong></article>
+      <div class="stats" :aria-label="copy.highlights">
+        <article class="stat large-stat"><span>{{ copy.experience }}</span><strong>{{ experienceDuration }}<span>.</span></strong></article>
       </div>
     </section>
 
     <section id="experience" class="section wrap">
-      <h2>Experience<span>.</span></h2>
-      <p class="section-intro">A short version of the places and projects that have helped shape how I build software.</p>
+      <h2>{{ copy.experience }}<span>.</span></h2>
+      <p class="section-intro">{{ copy.experienceIntro }}</p>
       <div class="experience-list">
         <article v-for="experience in experiences" :key="experience.company" class="experience-card">
           <div class="experience-heading">
@@ -163,42 +185,67 @@ function toggleTheme() {
             <div class="experience-meta"><span>● {{ experience.period }}</span><small>⌖ {{ experience.workMode }} · {{ experience.location }}</small></div>
           </div>
           <p class="experience-summary">{{ experience.summary }}</p>
-          <div class="tags"><span v-for="tag in experience.tags" :key="tag">{{ tag }}</span></div>
+          <div class="tags"><TechnologyBadge v-for="tag in experience.tags" :key="tag" :name="tag" :icon="experienceIcons[tag]" /></div>
         </article>
       </div>
-      <a class="quiet-button resume" href="/resume.pdf">View full resume →</a>
+      <a class="quiet-button resume" href="/resume.pdf">{{ copy.viewResume }}</a>
     </section>
 
-    <section id="work" class="section wrap">
-      <h2>Featured projects<span>.</span></h2>
-      <p class="section-intro">A selection of projects involving business workflows, integrations, data, and small experiments.</p>
+    <section id="projects" class="section wrap">
+      <h2>{{ copy.projects }}<span>.</span></h2>
+      <p class="section-intro">{{ copy.projectsIntro }} {{ copy.experienceBefore }} <a class="section-link" href="#experience">{{ copy.experience }}</a> {{ copy.experienceAfter }}</p>
       <div class="projects">
-        <article v-for="project in projects" :key="project.name" class="project-card">
+        <article v-for="project in caseStudies" :key="project.name" class="project-card">
           <div class="project-copy">
             <p>{{ project.kind }}</p>
             <h3>{{ project.name }}</h3>
             <p class="project-description">{{ project.text }}</p>
-            <div class="project-stack"><span v-for="[name, icon] in project.stack" :key="name"><img :src="`https://cdn.simpleicons.org/${icon}`" :alt="`${name} logo`">{{ name }}</span></div>
-            <a class="project-repo" :href="project.repo" target="_blank" rel="noreferrer">GitHub repository ↗</a>
+            <div class="project-stack"><TechnologyBadge v-for="[name, icon] in project.stack" :key="name" :name="name" :icon="icon" /></div>
+            <div class="project-actions">
+              <NuxtLink class="project-case-study" :to="localizedPath(project.detail)">{{ copy.viewProject }} <span aria-hidden="true">→</span></NuxtLink>
+            </div>
+            <a class="project-repo" :href="project.repo" target="_blank" rel="noreferrer" :aria-label="`${copy.github}: ${project.name}`" :title="`${copy.github}: ${project.name}`"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.45-1.11-1.45-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.84.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.53 9.53 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg></a>
           </div>
+        </article>
+      </div>
+      <div class="experiments">
+        <p class="eyebrow">{{ copy.experiment }}</p>
+        <article v-for="experiment in experiments" :key="experiment.name" class="experiment-card">
+          <div>
+            <h3>{{ experiment.name }}</h3>
+            <p>{{ experiment.text }}</p>
+            <div class="project-stack"><TechnologyBadge v-for="[name, icon] in experiment.stack" :key="name" :name="name" :icon="icon" /></div>
+          </div>
+          <a class="project-repo" :href="experiment.repo" target="_blank" rel="noreferrer" :aria-label="`Open ${experiment.name} on GitHub`" :title="`Open ${experiment.name} on GitHub`"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.45-1.11-1.45-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.84.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.53 9.53 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg></a>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="section wrap">
+      <h2>{{ copy.services }}<span>.</span></h2>
+      <p class="section-intro">{{ copy.servicesIntro }}</p>
+      <div class="services">
+        <article v-for="service in services" :key="service.name" class="service-card">
+          <p class="service-level">{{ service.level }}</p>
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.text }}</p>
         </article>
       </div>
     </section>
 
     <section class="section wrap">
-      <h2>Technologies I use<span>.</span></h2>
-      <p class="section-intro">A mix of what I use often and things I’m getting better at.</p>
+      <h2>{{ copy.technologies }}<span>.</span></h2>
+      <p class="section-intro">{{ copy.technologiesIntro }}</p>
       <div class="technology-list">
-        <span v-for="[name, icon] in technologies" :key="name"><img :src="`https://cdn.simpleicons.org/${icon}`" :alt="`${name} logo`">{{ name }}</span>
+        <TechnologyBadge v-for="[name, icon] in technologies" :key="name" :name="name" :icon="icon" />
       </div>
     </section>
 
     <section id="contact" class="section wrap contact">
-      <h2>Contact me<span>.</span></h2>
-      <p class="section-intro">If you think I could help with a backend, integration, or product problem, feel free to reach out.</p>
+      <h2>{{ copy.contact }}<span>.</span></h2>
+      <p class="section-intro">{{ copy.contactIntro }}</p>
       <div class="contact-actions">
-        <a class="button" :href="`mailto:${me.email}`">@ Email →</a>
-        <a class="quiet-button" href="https://discord.com" target="_blank" rel="noreferrer">◉ Discord →</a>
+        <a class="button" :href="projectInquiry">{{ copy.discuss }}</a>
       </div>
     </section>
 

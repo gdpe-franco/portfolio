@@ -2,34 +2,23 @@
 
 ## Purpose
 
-A personal portfolio for a backend-focused software engineer expanding into systems architecture, AI workflows, frontend delivery, and practical DevOps.
+A bilingual portfolio for Guada Franco, Full-Stack Software Engineer and independent developer. It serves prospective clients and recruiters through one professional identity.
 
-## Direction
+## Product direction
 
-The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-first portfolio with prominent type, layered colour, clear career narrative, and technical case studies. This project takes inspiration from that direction without copying its layout or content.
+- Lead with engineering experience, outcomes, and judgment.
+- Present services, experience, and project evidence in one clear journey.
+- Keep the editorial, dark-first identity accessible and content-first.
+- Use Nuxt UI for reusable interface primitives while preserving the custom palette, typography, and aurora.
+- Remain a static Nuxt site until a backend has a concrete purpose.
 
-## Product principles
+## Scope
 
-- Lead with backend systems and outcomes, not a list of tools.
-- Explain architecture decisions and trade-offs in selected case studies.
-- Keep motion restrained, performant, and optional for people who prefer reduced motion.
-- Ship as a static site first. Do not add a backend without a concrete need.
+- English and Spanish landing pages with equivalent static project pages.
+- Light and dark themes, responsive navigation, published CV, and direct contact links.
+- Experience, projects, services, technologies, and concise PlantUML architecture diagrams.
+- Static deployment to Cloudflare Pages from protected `main`; GitHub Actions validates pull requests.
 
-## Initial scope
+## Deferred
 
-- Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface.
-- Light and dark mode with the preference stored in the browser.
-- Sections for presentation and mission, about, experience, selected projects, technologies, and contact.
-- Static Nuxt output suitable for Cloudflare Pages.
-
-## Deferred until content is ready
-
-- Resume, blog, analytics, contact form backend, and CMS.
-- Project screenshots and architecture diagrams. A real portrait, CV PDF, GitHub profile URL, Discord profile URL, and exact employer history still need to be supplied.
-- Any paid Cloudflare product.
-
-## Deployment target
-
-Cloudflare Pages Free. The site should remain static unless a dynamic capability is explicitly justified.
-
-Cloudflare Pages deploys production through Git integration from protected `main`. GitHub Actions validates pull requests but does not deploy or hold Cloudflare credentials. Preview deployments are for review and should be protected with Cloudflare Access.
+Contact forms, analytics, scheduling, CMS, blog content, project screenshots, and paid Cloudflare services.
