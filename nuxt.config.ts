@@ -1,25 +1,28 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import { localeCodes, defaultLocale, localePath } from './app/locales'
+import { caseStudies } from './app/data/case-studies'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
+  hooks: {
+    'pages:extend'(pages) {
+      const originals = [...pages]
+      for (const code of localeCodes.filter(code => code !== defaultLocale)) {
+        for (const page of originals) {
+          pages.push({ ...page, name: `${String(page.name)}-${code}`, path: localePath(page.path, code) })
+        }
+      }
+    },
+  },
   nitro: {
     prerender: {
-      routes: ['/projects/cfdi-4-generator', '/projects/book-management-system', '/projects/geographical-keys'],
+      routes: localeCodes.flatMap(code => ['/', ...caseStudies.map(project => `/projects/${project.slug}`)].map(path => localePath(path, code))),
     },
   },
   app: {
     head: {
-      title: 'Guada Franco · Full-Stack Software Engineer',
-      meta: [
-        {
-          name: 'description',
-          content:
-            'Guada Franco is a full-stack software engineer and independent developer who builds integrations, backend systems, automation, and custom tools.',
-        },
-      ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=plex-gf' }],
     },
   },
 })

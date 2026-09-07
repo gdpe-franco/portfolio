@@ -24,6 +24,8 @@ The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-f
 - Published CV and direct paths to GitHub, LinkedIn, and email.
 - Formal UML component diagrams are authored in PlantUML and rendered to static, theme-specific SVG during the build. They remain concise technical-design content, not exhaustive architecture documentation.
 - Static Nuxt output suitable for Cloudflare Pages.
+- Public copy lives in `app/locales/en.ts` and `es.ts`, with matching dictionary shapes checked by TypeScript.
+- The hero portrait uses a bounded 4:5 frame: up to 320px on large screens, 240px on tablets, and 180px on phones. The favicon uses IBM Plex Mono Bold glyph outlines and the wordmark's spacing and colors. Languages are selected through a native control displaying EN/ES, with full language names for assistive technology and styling matching the theme switcher.
 
 ## Deferred until content is ready
 
