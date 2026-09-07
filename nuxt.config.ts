@@ -3,7 +3,7 @@ import { caseStudies } from './app/data/case-studies'
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', '@nuxt/ui'],
   css: ['~/assets/css/main.css'],
   hooks: {
     'pages:extend'(pages) {

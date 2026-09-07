@@ -37,10 +37,10 @@ const caseStudies = computed(() => messages.value.caseStudies)
 const experiments = computed(() => messages.value.experiments)
 
 const technologies = [
-  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Django', 'django'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', 'soapui'], ['Microservices', 'docker'], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', 'phpunit'], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['AI agents', 'openai'], ['MCP', 'openai'], ['Codex', 'openai'], ['Claude Code', 'anthropic'], ['GitHub Copilot', 'githubcopilot'],
+  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Django', 'django'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', ''], ['Microservices', ''], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', ''], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['AI agents', ''], ['MCP', ''], ['Codex', ''], ['Claude Code', ''], ['GitHub Copilot', 'githubcopilot'],
 ]
 
-const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', MCP: 'openai', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', Integrations: 'openapiinitiative', PrimeVue: 'primevue', UML: 'uml' }
+const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', PrimeVue: 'primevue', UML: 'uml' }
 
 const experiences = computed(() => messages.value.experiences)
 
@@ -129,16 +129,16 @@ function toggleTheme() {
 
     <nav class="nav wrap" :class="{ 'is-scrolled': hasReachedAbout }" :aria-label="copy.navigation">
       <a class="wordmark" href="#" :aria-label="copy.home">GF<span>.</span></a>
-      <button class="menu-toggle" type="button" :aria-expanded="menuOpen" aria-controls="site-navigation" :aria-label="menuOpen ? copy.closeMenu : copy.openMenu" @click="menuOpen = !menuOpen">☰</button>
+      <UButton class="menu-toggle" type="button" color="neutral" variant="ghost" square :aria-expanded="menuOpen" aria-controls="site-navigation" :aria-label="menuOpen ? copy.closeMenu : copy.openMenu" @click="menuOpen = !menuOpen">☰</UButton>
       <div id="site-navigation" class="nav-actions" :class="{ 'is-open': menuOpen }">
         <a href="#experience" @click="menuOpen = false">{{ copy.nav[0] }}</a>
         <a href="#projects" @click="menuOpen = false">{{ copy.nav[1] }}</a>
         <a href="#services" @click="menuOpen = false">{{ copy.nav[2] }}</a>
         <a href="#contact" @click="menuOpen = false">{{ copy.nav[3] }}</a>
         <LanguageSwitcher />
-        <button class="theme-toggle" type="button" :aria-label="theme === 'dark' ? copy.light : copy.dark" @click="toggleTheme">
+        <UButton class="theme-toggle" type="button" color="neutral" variant="ghost" square :aria-label="theme === 'dark' ? copy.light : copy.dark" @click="toggleTheme">
           {{ theme === 'dark' ? '☼' : '◐' }}
-        </button>
+        </UButton>
       </div>
     </nav>
 
@@ -185,7 +185,7 @@ function toggleTheme() {
             <div class="experience-meta"><span>● {{ experience.period }}</span><small>⌖ {{ experience.workMode }} · {{ experience.location }}</small></div>
           </div>
           <p class="experience-summary">{{ experience.summary }}</p>
-          <div class="tags"><span v-for="tag in experience.tags" :key="tag"><TechnologyIcon :icon="experienceIcons[tag]" />{{ tag }}</span></div>
+          <div class="tags"><TechnologyBadge v-for="tag in experience.tags" :key="tag" :name="tag" :icon="experienceIcons[tag]" /></div>
         </article>
       </div>
       <a class="quiet-button resume" href="/resume.pdf">{{ copy.viewResume }}</a>
@@ -200,7 +200,7 @@ function toggleTheme() {
             <p>{{ project.kind }}</p>
             <h3>{{ project.name }}</h3>
             <p class="project-description">{{ project.text }}</p>
-            <div class="project-stack"><span v-for="[name, icon] in project.stack" :key="name"><TechnologyIcon :icon="icon" />{{ name }}</span></div>
+            <div class="project-stack"><TechnologyBadge v-for="[name, icon] in project.stack" :key="name" :name="name" :icon="icon" /></div>
             <div class="project-actions">
               <NuxtLink class="project-case-study" :to="localizedPath(project.detail)">{{ copy.viewProject }} <span aria-hidden="true">→</span></NuxtLink>
             </div>
@@ -214,7 +214,7 @@ function toggleTheme() {
           <div>
             <h3>{{ experiment.name }}</h3>
             <p>{{ experiment.text }}</p>
-            <div class="project-stack"><span v-for="[name, icon] in experiment.stack" :key="name"><TechnologyIcon :icon="icon" />{{ name }}</span></div>
+            <div class="project-stack"><TechnologyBadge v-for="[name, icon] in experiment.stack" :key="name" :name="name" :icon="icon" /></div>
           </div>
           <a class="project-repo" :href="experiment.repo" target="_blank" rel="noreferrer" :aria-label="`Open ${experiment.name} on GitHub`" :title="`Open ${experiment.name} on GitHub`"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.46-1.15-1.11-1.45-1.11-1.45-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.84.09-.64.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.53 9.53 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" /></svg></a>
         </article>
@@ -237,7 +237,7 @@ function toggleTheme() {
       <h2>{{ copy.technologies }}<span>.</span></h2>
       <p class="section-intro">{{ copy.technologiesIntro }}</p>
       <div class="technology-list">
-        <span v-for="[name, icon] in technologies" :key="name"><TechnologyIcon :icon="icon" />{{ name }}</span>
+        <TechnologyBadge v-for="[name, icon] in technologies" :key="name" :name="name" :icon="icon" />
       </div>
     </section>
 

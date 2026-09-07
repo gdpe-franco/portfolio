@@ -41,13 +41,13 @@ function toggleTheme() {
   <main class="case-study-page" :data-theme="theme">
     <nav class="nav wrap" :class="{ 'is-scrolled': hasScrolled }" :aria-label="projectText.navigation">
       <NuxtLink class="wordmark" :to="localizedPath('/')" :aria-label="projectText.home">GF<span>.</span></NuxtLink>
-      <button class="menu-toggle" type="button" :aria-expanded="menuOpen" aria-controls="project-navigation" :aria-label="menuOpen ? messages.copy.closeMenu : messages.copy.openMenu" @click="menuOpen = !menuOpen">☰</button>
+      <UButton class="menu-toggle" type="button" color="neutral" variant="ghost" square :aria-expanded="menuOpen" aria-controls="project-navigation" :aria-label="menuOpen ? messages.copy.closeMenu : messages.copy.openMenu" @click="menuOpen = !menuOpen">☰</UButton>
       <div id="project-navigation" class="nav-actions" :class="{ 'is-open': menuOpen }">
         <NuxtLink :to="localizedPath('/#projects')">{{ projectText.all }}</NuxtLink>
         <LanguageSwitcher />
-        <button class="theme-toggle" type="button" :aria-label="theme === 'dark' ? projectText.light : projectText.dark" @click="toggleTheme">
+        <UButton class="theme-toggle" type="button" color="neutral" variant="ghost" square :aria-label="theme === 'dark' ? projectText.light : projectText.dark" @click="toggleTheme">
           {{ theme === 'dark' ? '☼' : '◐' }}
-        </button>
+        </UButton>
       </div>
     </nav>
 
@@ -73,7 +73,7 @@ function toggleTheme() {
       </figure>
 
       <section class="case-study-result"><p class="eyebrow">{{ projectText.resultLabel }}</p><p>{{ projectText.result }}</p></section>
-      <section class="case-study-technologies" :aria-label="projectText.technologies"><p class="eyebrow">{{ projectText.technologies }}</p><div class="technology-list"><span v-for="[name, icon] in caseStudy.technologies" :key="name"><TechnologyIcon :icon="icon" />{{ name }}</span></div></section>
+      <section class="case-study-technologies" :aria-label="projectText.technologies"><p class="eyebrow">{{ projectText.technologies }}</p><div class="technology-list"><TechnologyBadge v-for="[name, icon] in caseStudy.technologies" :key="name" :name="name" :icon="icon" /></div></section>
       <NuxtLink class="quiet-button" :to="localizedPath('/#projects')">{{ projectText.back }}</NuxtLink>
     </article>
   </main>

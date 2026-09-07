@@ -2,39 +2,23 @@
 
 ## Purpose
 
-A personal portfolio for a full-stack software engineer and independent developer. It should serve prospective clients and full-time recruiters through one clear professional identity.
+A bilingual portfolio for Guada Franco, Full-Stack Software Engineer and independent developer. It serves prospective clients and recruiters through one professional identity.
 
-## Direction
+## Product direction
 
-The visual reference is https://ceo.pronexus.in/: a confident, editorial, dark-first portfolio with prominent type, layered colour, clear career narrative, and technical case studies. This project takes inspiration from that direction without copying its layout or content.
+- Lead with engineering experience, outcomes, and judgment.
+- Present services, experience, and project evidence in one clear journey.
+- Keep the editorial, dark-first identity accessible and content-first.
+- Use Nuxt UI for reusable interface primitives while preserving the custom palette, typography, and aurora.
+- Remain a static Nuxt site until a backend has a concrete purpose.
 
-## Product principles
+## Scope
 
-- Lead with backend systems and outcomes, not a list of tools.
-- Present client services alongside recruiter-friendly experience and public project proof, without splitting the site into separate brands or journeys.
-- Explain architecture decisions and trade-offs in selected case studies.
-- Keep motion restrained, performant, and optional for people who prefer reduced motion.
-- Ship as a static site first. Do not add a backend without a concrete need.
+- English and Spanish landing pages with equivalent static project pages.
+- Light and dark themes, responsive navigation, published CV, and direct contact links.
+- Experience, projects, services, technologies, and concise PlantUML architecture diagrams.
+- Static deployment to Cloudflare Pages from protected `main`; GitHub Actions validates pull requests.
 
-## Initial scope
+## Deferred
 
-- Single-page landing page with an animated CSS aurora, mono-first typography, and a subtle grain surface, plus dedicated static project pages.
-- Light and dark mode with the preference stored in the browser.
-- Sections for presentation and mission, about, experience, selected projects, a small experiment, services, technologies, and contact.
-- Published CV and direct paths to GitHub, LinkedIn, and email.
-- Formal UML component diagrams are authored in PlantUML and rendered to static, theme-specific SVG during the build. They remain concise technical-design content, not exhaustive architecture documentation.
-- Static Nuxt output suitable for Cloudflare Pages.
-- Public copy lives in `app/locales/en.ts` and `es.ts`, with matching dictionary shapes checked by TypeScript.
-- The hero portrait uses a bounded 4:5 frame: up to 320px on large screens, 240px on tablets, and 180px on phones. The favicon uses IBM Plex Mono Bold glyph outlines and the wordmark's spacing and colors. Languages are selected through a native control displaying EN/ES, with full language names for assistive technology and styling matching the theme switcher.
-
-## Deferred until content is ready
-
-- Blog, analytics, contact form backend, and CMS.
-- Project screenshots.
-- Any paid Cloudflare product.
-
-## Deployment target
-
-Cloudflare Pages Free. The site should remain static unless a dynamic capability is explicitly justified.
-
-Cloudflare Pages deploys production through Git integration from protected `main`. GitHub Actions validates pull requests but does not deploy or hold Cloudflare credentials. Automatic preview deployments are disabled; development branches are reviewed locally.
+Contact forms, analytics, scheduling, CMS, blog content, project screenshots, and paid Cloudflare services.

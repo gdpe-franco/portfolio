@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{ icon?: string }>()
-const failed = ref(false)
-
-watch(() => props.icon, () => { failed.value = false })
+defineProps<{ icon?: string }>()
 </script>
 
 <template>
-  <img v-if="icon && !failed" :src="`https://cdn.simpleicons.org/${icon}`" alt="" @error="failed = true">
+  <UIcon v-if="icon" class="technology-icon" :name="`i-simple-icons-${icon}`" aria-hidden="true" />
 </template>
