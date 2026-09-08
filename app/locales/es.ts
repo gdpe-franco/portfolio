@@ -74,83 +74,6 @@ export default {
       "text": "Construyo herramientas internas pequeñas y flujos prácticos asistidos por IA para necesidades específicas."
     }
   ],
-  "caseStudies": [
-    {
-      "kind": "Herramienta interna",
-      "name": "Book Management System",
-      "text": "Un panel local para administrar libros y sus cambios, con acceso por roles, historial de auditoría inmutable y notificaciones en vivo.",
-      "detail": "/projects/book-management-system",
-      "repo": "https://github.com/gdpe-franco/book-management-system",
-      "stack": [
-        [
-          "Laravel",
-          "laravel"
-        ],
-        [
-          "Vue.js",
-          "vuedotjs"
-        ],
-        [
-          "Node.js",
-          "nodedotjs"
-        ],
-        [
-          "TypeScript",
-          "typescript"
-        ],
-        [
-          "Redis",
-          "redis"
-        ]
-      ]
-    },
-    {
-      "kind": "Integración y procesamiento de documentos",
-      "name": "CFDI 4.0 Generator",
-      "text": "Una prueba técnica enfocada en Laravel que convierte JSON estructurado en XML de ingreso CFDI 4.0 y lo valida localmente.",
-      "detail": "/projects/cfdi-4-generator",
-      "repo": "https://github.com/gdpe-franco/cfdi-4-generator",
-      "stack": [
-        [
-          "Laravel",
-          "laravel"
-        ],
-        [
-          "PHP",
-          "php"
-        ],
-        [
-          "Docker",
-          "docker"
-        ]
-      ]
-    },
-    {
-      "kind": "Aplicación de datos públicos",
-      "name": "Geographical Keys",
-      "text": "Una aplicación pública para consultar entidades federativas y municipios de México mediante el Catálogo Geoestadístico del INEGI.",
-      "detail": "/projects/geographical-keys",
-      "repo": "https://github.com/gdpe-franco/geostatistical-keys",
-      "stack": [
-        [
-          "Laravel",
-          "laravel"
-        ],
-        [
-          "Vue.js",
-          "vuedotjs"
-        ],
-        [
-          "MySQL",
-          "mysql"
-        ],
-        [
-          "Docker",
-          "docker"
-        ]
-      ]
-    }
-  ],
   "experiments": [
     {
       "name": "Cat Gesture Meme Tracker",
@@ -231,7 +154,7 @@ export default {
     "all": "Todos los proyectos",
     "readEnglish": "Leer en inglés",
     "readSpanish": "Leer en español",
-    "source": "Código fuente en GitHub ↗",
+    "source": "Código fuente en GitHub",
     "contextLabel": "Contexto y alcance",
     "approachLabel": "Enfoque",
     "decisionsLabel": "Decisiones clave",
@@ -244,25 +167,31 @@ export default {
   },
   "projects": {
     "cfdi-4-generator": {
+      "kind": "Integración y procesamiento de documentos",
       "description": "Una prueba técnica enfocada en Laravel que convierte JSON estructurado en XML de ingreso CFDI 4.0 y lo valida localmente.",
       "context": "Generar un documento CFDI 4.0 de ingreso a partir de datos estructurados sin tratar una tarea basada en especificaciones como un simple ejercicio de formato.",
       "approach": "Un comando de Artisan lee JSON, aplica validaciones de entrada, catálogos del SAT y guía de llenado, calcula importes, construye XML con DOMDocument y lo valida localmente.",
       "decisions": "Los importes se mantienen como cadenas decimales y usan bcmath en lugar de flotantes de PHP. La validación se divide en entradas, catálogos, XSD local y comprobaciones estructurales.",
-      "result": "El comando escribe un XML trazable y reporta errores de validación con un estado de salida distinto de cero. Es una demostración pública, no un sistema de facturación."
+      "result": "El comando escribe un XML trazable y reporta errores de validación con un estado de salida distinto de cero. Es una demostración pública, no un sistema de facturación.",
+      "diagramDescription": "El comando CFDI lee JSON, lo valida y calcula, y después produce y valida XML."
     },
     "book-management-system": {
+      "kind": "Herramienta interna",
       "description": "Un panel local para administrar libros y sus cambios, con acceso por roles, historial de auditoría inmutable y notificaciones en vivo.",
       "context": "Una herramienta interna para mantener un catálogo de libros y dar seguimiento a cambios importantes con controles claros.",
       "approach": "La aplicación separa la gestión del catálogo, el historial de auditoría y las notificaciones para que cada cambio pueda revisarse y comunicarse.",
       "decisions": "La autorización por roles y el historial inmutable protegen las operaciones sensibles. Un servicio Node.js publica notificaciones y Redis mantiene la comunicación entre procesos.",
-      "result": "El sistema ofrece una vista operativa para administrar libros, revisar cambios y recibir actualizaciones sin perder el contexto de cada operación."
+      "result": "El sistema ofrece una vista operativa para administrar libros, revisar cambios y recibir actualizaciones sin perder el contexto de cada operación.",
+      "diagramDescription": "Los cambios de libros pasan por Laravel y Redis al servicio de auditoría, que notifica al panel."
     },
     "geographical-keys": {
+      "kind": "Aplicación de datos públicos",
       "description": "Una aplicación pública para consultar entidades federativas y municipios de México mediante el Catálogo Geoestadístico del INEGI.",
       "context": "Convertir un catálogo público de datos geográficos en una herramienta clara para consultar la estructura territorial de México.",
       "approach": "La aplicación importa y normaliza los datos, los almacena con relaciones explícitas y expone una interfaz para explorarlos por niveles.",
       "decisions": "El modelo relacional conserva la jerarquía entre entidades y municipios. La interfaz separa la consulta de datos de la presentación para mantener el flujo sencillo.",
-      "result": "El proyecto ofrece una forma directa de explorar datos geográficos públicos y muestra cómo organizar información jerárquica para su uso cotidiano."
+      "result": "El proyecto ofrece una forma directa de explorar datos geográficos públicos y muestra cómo organizar información jerárquica para su uso cotidiano.",
+      "diagramDescription": "Las entidades se importan desde INEGI y los municipios se consultan cuando el visitante selecciona un estado."
     }
   }
 } satisfies typeof en

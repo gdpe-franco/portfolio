@@ -1,0 +1,7 @@
+!define ACCENT #8B6470
+
+skinparam backgroundColor transparent
+skinparam defaultFontName "IBM Plex Mono"
+skinparam defaultFontSize 12
+skinparam shadowing false
+skinparam roundcorner 6
