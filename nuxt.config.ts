@@ -5,6 +5,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@nuxt/ui'],
   css: ['~/assets/css/main.css'],
+  colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
+    storageKey: 'theme',
+  },
   hooks: {
     'pages:extend'(pages) {
       const originals = [...pages]
@@ -22,7 +27,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=plex-gf' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' }],
     },
   },
 })
