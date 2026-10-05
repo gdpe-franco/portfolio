@@ -64,7 +64,7 @@ export default {
     {
       "name": "Backend & web systems",
       "level": "Primary focus",
-      "text": "Add features and maintain Laravel/PHP applications, APIs, and internal software."
+      "text": "Build and maintain APIs and web systems with PHP, TypeScript, JavaScript, Go, Python or other languages as appropriate for the project."
     },
     {
       "name": "Custom tools & AI",
@@ -101,7 +101,7 @@ export default {
       "period": "Sep 2025 – Jul 2026",
       "workMode": "Remote",
       "location": "Querétaro, México",
-      "summary": "Built Symfony features and APIs for a SaaS platform used by 8,000+ organizations. Contributed technical proposals, production support, and an internal MCP integration using OpenAI’s Responses API.",
+      "summary": "Owned Symfony features from design through production support for a SaaS platform serving 8,000+ organizations. Authored and presented technical design proposals, and designed and shipped an internal MCP integration to production on OpenAI’s Responses API.",
       "tags": [
         "Symfony",
         "APIs",
@@ -116,14 +116,14 @@ export default {
       "period": "Aug 2023 – Sep 2025",
       "workMode": "Remote",
       "location": "Monterrey, México",
-      "summary": "Built Laravel applications, Go and Python microservices, and Vue internal tools for a logistics platform used by 1,000+ active merchants. Worked on marketplace and carrier integrations, SAML SSO, and billing reports.",
+      "summary": "Owned the Laravel 5.2 to 6.x monolith migration version by version for a logistics platform serving 1,000+ active merchants. Built and publicly shipped API v2 for shipment rates and labels with a staged rollout; implemented SAML 2.0 SSO with Auth0 for enterprise customers; maintained and refactored marketplace and carrier integrations.",
       "tags": [
         "Laravel",
+        "React",
         "Go",
         "Python",
         "Vue.js",
-        "React",
-        "Integrations"
+        "Auth0"
       ]
     },
     {

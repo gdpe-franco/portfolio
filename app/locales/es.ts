@@ -66,7 +66,7 @@ export default {
     {
       "name": "Backend y sistemas web",
       "level": "Enfoque principal",
-      "text": "Agrego funcionalidades y mantengo aplicaciones Laravel/PHP, APIs y software interno."
+      "text": "Desarrollo y mantengo APIs y sistemas web con PHP, TypeScript, JavaScript, Go, Python u otros lenguajes según el proyecto."
     },
     {
       "name": "Herramientas personalizadas e IA",
@@ -103,7 +103,7 @@ export default {
       "period": "sep 2025 – jul 2026",
       "workMode": "Remoto",
       "location": "Querétaro, México",
-      "summary": "Construí funcionalidades y APIs con Symfony para una plataforma SaaS usada por más de 8,000 organizaciones. Contribuí con propuestas técnicas, soporte en producción y una integración interna de MCP usando la API Responses de OpenAI.",
+      "summary": "Me encargué de funcionalidades con Symfony desde el diseño hasta el soporte en producción para una plataforma SaaS usada por más de 8,000 organizaciones. Redacté y presenté propuestas de diseño técnico, y diseñé y llevé a producción una integración interna de MCP con la API Responses de OpenAI.",
       "tags": [
         "Symfony",
         "APIs",
@@ -118,14 +118,14 @@ export default {
       "period": "ago 2023 – sep 2025",
       "workMode": "Remoto",
       "location": "Monterrey, México",
-      "summary": "Construí aplicaciones Laravel, microservicios en Go y Python y herramientas internas en Vue para una plataforma logística usada por más de 1,000 comercios activos. Trabajé en integraciones con marketplaces y transportistas, SSO con SAML y reportes de facturación.",
+      "summary": "Lideré la migración del monolito Laravel de 5.2 a 6.x, versión por versión, para una plataforma logística usada por más de 1,000 comercios activos. Construí y publiqué la API v2 para cotizaciones y etiquetas de envío con un despliegue gradual; implementé SSO SAML 2.0 con Auth0 para clientes empresariales; mantuve y refactoricé integraciones con marketplaces y transportistas.",
       "tags": [
         "Laravel",
+        "React",
         "Go",
         "Python",
         "Vue.js",
-        "React",
-        "Integraciones"
+        "Auth0"
       ]
     },
     {

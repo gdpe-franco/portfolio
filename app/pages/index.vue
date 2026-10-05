@@ -39,10 +39,10 @@ const caseStudies = computed(() => projectData.map(project => ({ ...project, ...
 const experiments = computed(() => messages.value.experiments)
 
 const technologies = [
-  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Django', 'django'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', ''], ['Microservices', ''], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', ''], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['AI agents', ''], ['MCP', ''], ['Codex', ''], ['Claude Code', ''], ['GitHub Copilot', 'githubcopilot'],
+  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Node.js', ''], ['NestJS', 'nestjs'], ['Python', 'python'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', ''], ['Microservices', ''], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Amazon S3', 'amazons3'], ['Amazon SQS', 'amazonsqs'], ['Amazon EC2', 'amazonec2'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', ''], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['Model Context Protocol (MCP)', ''], ['OpenAI Responses API', 'openai'], ['Hermes Agent', 'hermes'], ['Codex', ''], ['Claude Code', ''], ['GitHub Copilot', 'githubcopilot'],
 ]
 
-const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', PrimeVue: 'primevue', UML: 'uml' }
+const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', Auth0: 'auth0', PrimeVue: 'primevue', UML: 'uml' }
 
 const experiences = computed(() => messages.value.experiences)
 
