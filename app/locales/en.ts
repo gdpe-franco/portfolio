@@ -144,7 +144,7 @@ export default {
   "about": [
     "My work spans user-facing interfaces, APIs, data, and the practical details that make a product work well as a whole. I build integrations and internal tools that support daily work.",
     "Backend engineering is where I feel most at home, especially background jobs, queues and retries, observability, authentication, and clear service boundaries. At the same time, I care about the whole development lifecycle, from understanding a problem to shipping and supporting a solution.",
-    "On a normal workday I use AI agents, MCP servers, and coding assistants for research, prototyping, and routine development tasks. I find this new wave of tools fascinating."
+    "I use AI agents, MCP servers, and coding assistants in my daily work, and I’m also building agent-based applications. I find this new wave of tools fascinating."
   ],
   "projectLabels": {
     "navigation": "Project navigation",
@@ -164,6 +164,15 @@ export default {
     "dark": "Switch to dark mode"
   },
   "projects": {
+    "ai-coding-agent-pipeline": {
+      "kind": "AI orchestration & developer tooling",
+      "description": "A chat-based platform that turns natural-language requests into small web applications through planning, code generation, and review agents, with persistent project context and bounded revisions.",
+      "context": "Build a platform where people can describe a small web application, inspect how it is generated, and request changes in the same project conversation. The current implementation generates static HTML, CSS, and JavaScript; arbitrary repository modification and generated backend execution are out of scope.",
+      "approach": "A Vue and TypeScript chat sends requests to a FastAPI service, which persists work in PostgreSQL for a separate LangGraph worker. Planner, Coder, and Reviewer agents use Azure OpenAI; approved files are published as a preview. For local deployments, ngrok can expose the application while Cloudflare Quick Tunnel provides a separate hostname for generated previews.",
+      "decisions": "Each agent returns structured, validated output. The Reviewer can send bounded feedback to the Coder; when attempts run out or the case needs escalation, the run pauses for user guidance. A separate worker keeps long model calls out of HTTP requests, while PostgreSQL stores application state, queue work, history, and graph checkpoints. The preview uses a separate origin from the signed-in application.",
+      "result": "Users can inspect plans, checks, review feedback, saved files, execution history, and reported token usage, then view the latest approved preview. Automated checks cover required files and JavaScript syntax; functional behavior still needs dedicated testing.",
+      "diagramDescription": "A Vue chat sends requests through FastAPI to a PostgreSQL-backed worker running Planner, Coder, and Reviewer agents; approved applications are served on a separate preview origin."
+    },
     "cfdi-4-generator": {
       "kind": "Integration & document processing",
       "description": "A focused Laravel technical test that converts structured JSON into CFDI 4.0 Ingreso XML and validates it locally.",

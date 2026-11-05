@@ -1,5 +1,11 @@
 export const caseStudies = [
   {
+    slug: 'ai-coding-agent-pipeline',
+    name: 'AI Multi-Agent Coding Platform',
+    repository: 'https://github.com/gdpe-franco/ai-coding-agent-pipeline',
+    technologies: [['Python', 'python'], ['FastAPI', 'fastapi'], ['LangGraph', 'langchain'], ['Azure OpenAI', 'openai'], ['PostgreSQL', 'postgresql'], ['Vue.js', 'vuedotjs'], ['Docker', 'docker']],
+  },
+  {
     slug: 'book-management-system',
     name: 'Book Management System',
     repository: 'https://github.com/gdpe-franco/book-management-system',

@@ -4,6 +4,7 @@ const props = defineProps<{ icon?: string }>()
 const brandColors: Record<string, string> = {
   django: '#092e20',
   docker: '#2496ed',
+  fastapi: '#009688',
   git: '#f05032',
   githubactions: '#2088ff',
   githubcopilot: '#8957e5',
@@ -11,6 +12,7 @@ const brandColors: Record<string, string> = {
   javascript: '#f7df1e',
   jenkins: '#d24939',
   laravel: '#ff2d20',
+  langchain: '#1c3c3c',
   mysql: '#4479a1',
   newrelic: '#1ce783',
   nodedotjs: '#5fa04e',
@@ -18,6 +20,7 @@ const brandColors: Record<string, string> = {
   openai: '#74aa9c',
   openapiinitiative: '#6ba539',
   php: '#777bb4',
+  pydantic: '#e92063',
   postgresql: '#4169e1',
   primevue: '#41b883',
   python: '#3776ab',

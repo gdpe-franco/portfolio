@@ -146,7 +146,7 @@ export default {
   "about": [
     "Mi trabajo abarca interfaces para usuarios, APIs, datos y los detalles prácticos que hacen que un producto funcione como un todo. Construyo integraciones y herramientas internas que apoyan el trabajo diario.",
     "El backend es donde me siento más cómoda, especialmente con trabajos en segundo plano, queues y reintentos, observabilidad, autenticación y límites claros entre servicios. Al mismo tiempo, me importa todo el ciclo de desarrollo, desde entender un problema hasta entregar y acompañar una solución.",
-    "En un día normal uso agentes de IA, servidores MCP y asistentes de programación para investigar, crear prototipos y resolver tareas habituales. Esta nueva ola de herramientas me parece fascinante."
+    "Uso agentes de IA, servidores MCP y asistentes de programación en mi trabajo diario, y también estoy construyendo aplicaciones basadas en agentes. Esta nueva ola de herramientas me parece fascinante."
   ],
   "projectLabels": {
     "navigation": "Navegación del proyecto",
@@ -166,6 +166,15 @@ export default {
     "dark": "Cambiar a modo oscuro"
   },
   "projects": {
+    "ai-coding-agent-pipeline": {
+      "kind": "Orquestación de IA y herramientas para desarrollo",
+      "description": "Una plataforma conversacional que convierte solicitudes en lenguaje natural en pequeñas aplicaciones web mediante agentes de planificación, generación de código y revisión, con contexto persistente y revisiones limitadas.",
+      "context": "Crear una plataforma donde las personas describan una aplicación web pequeña, inspeccionen cómo se genera y soliciten cambios dentro de la misma conversación del proyecto. La implementación actual genera HTML, CSS y JavaScript estáticos; modificar repositorios arbitrarios y ejecutar backends generados quedan fuera del alcance.",
+      "approach": "Un chat en Vue y TypeScript envía solicitudes a un servicio FastAPI, que guarda el trabajo en PostgreSQL para que lo procese un worker independiente con LangGraph. Los agentes Planner, Coder y Reviewer usan Azure OpenAI; los archivos aprobados se publican en una vista previa. Para despliegues locales, ngrok puede exponer la aplicación y Cloudflare Quick Tunnel ofrece un hostname separado para las vistas previas generadas.",
+      "decisions": "Cada agente devuelve una salida estructurada y validada. Reviewer puede enviar observaciones acotadas a Coder; cuando se agotan los intentos o hace falta escalar el caso, la ejecución espera orientación de la persona. Un worker independiente mantiene las llamadas largas al modelo fuera de las solicitudes HTTP, mientras PostgreSQL guarda el estado, la cola, el historial y los checkpoints del grafo. La vista previa usa un origen distinto al de la aplicación con sesión iniciada.",
+      "result": "Las personas pueden inspeccionar planes, validaciones, observaciones, archivos guardados, historial de ejecuciones y el uso de tokens informado, además de consultar la última vista previa aprobada. Las comprobaciones automáticas cubren los archivos requeridos y la sintaxis de JavaScript; el comportamiento funcional requiere pruebas específicas.",
+      "diagramDescription": "Un chat en Vue envía solicitudes mediante FastAPI a un worker respaldado por PostgreSQL que ejecuta agentes Planner, Coder y Reviewer; las aplicaciones aprobadas se sirven desde un origen de vista previa separado."
+    },
     "cfdi-4-generator": {
       "kind": "Integración y procesamiento de documentos",
       "description": "Una prueba técnica enfocada en Laravel que convierte JSON estructurado en XML de ingreso CFDI 4.0 y lo valida localmente.",

@@ -1,0 +1,32 @@
+@startuml
+!ifdef DARK_THEME
+!include themes/theme-dark.puml
+!else
+!include themes/theme-light.puml
+!endif
+
+title AI Multi-Agent Coding Platform: request to approved preview
+top to bottom direction
+skinparam nodesep 32
+skinparam ranksep 42
+
+actor "User" as user
+component "Vue chat\n<<Frontend>>" as ui
+component "FastAPI\n<<Application origin · ngrok>>" as api
+database "PostgreSQL\n<<State · queue · checkpoints>>" as db
+component "LangGraph worker\nPlanner → Coder → Reviewer" as worker
+component "Azure OpenAI" as llm
+folder "Persistent workspace\nartifacts and approved files" as files
+component "Preview origin\n<<Cloudflare Quick Tunnel>>" as preview
+
+user --> ui : describes request
+ui --> api : HTTPS and polling
+api --> db : stores request
+worker --> db : claims work and saves events
+worker --> llm : structured model calls
+worker --> files : validates and publishes
+api --> files : serves project files
+user --> preview : opens approved app
+preview --> api : separate hostname
+worker ..> worker : bounded review loop\nor request user guidance
+@enduml
