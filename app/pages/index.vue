@@ -42,8 +42,17 @@ const caseStudies = computed(() => projectData.map(project => ({ ...project, ...
 const experiments = computed(() => messages.value.experiments)
 
 const technologies = [
-  ['PHP', 'php'], ['Laravel', 'laravel'], ['Symfony', 'symfony'], ['Node.js', ''], ['NestJS', 'nestjs'], ['Python', 'python'], ['FastAPI', 'fastapi'], ['Pydantic', 'pydantic'], ['Go', 'go'], ['REST APIs', 'openapiinitiative'], ['SOAP APIs', ''], ['Microservices', ''], ['JavaScript', 'javascript'], ['TypeScript', 'typescript'], ['React', 'react'], ['Vue.js', 'vuedotjs'], ['Nuxt', 'nuxt'], ['PostgreSQL', 'postgresql'], ['MySQL', 'mysql'], ['Redis', 'redis'], ['Docker', 'docker'], ['Amazon S3', 'amazons3'], ['Amazon SQS', 'amazonsqs'], ['Amazon EC2', 'amazonec2'], ['Git', 'git'], ['GitHub Actions', 'githubactions'], ['Jenkins', 'jenkins'], ['PHPUnit', ''], ['Swagger', 'swagger'], ['Sentry', 'sentry'], ['New Relic', 'newrelic'], ['Model Context Protocol (MCP)', ''], ['OpenAI Responses API', 'openai'], ['Azure OpenAI', 'openai'], ['LangGraph', 'langchain'], ['Hermes Agent', 'hermes'], ['Codex', ''], ['Claude Code', ''], ['GitHub Copilot', 'githubcopilot'],
+  { name: 'PHP', icon: 'php', categories: ['Backend & APIs'] }, { name: 'Laravel', icon: 'laravel', categories: ['Backend & APIs'] }, { name: 'Symfony', icon: 'symfony', categories: ['Backend & APIs'] }, { name: 'Node.js', icon: '', categories: ['Backend & APIs'] }, { name: 'NestJS', icon: 'nestjs', categories: ['Backend & APIs'] }, { name: 'Python', icon: 'python', categories: ['Backend & APIs'] }, { name: 'FastAPI', icon: 'fastapi', categories: ['Backend & APIs'] }, { name: 'Pydantic', icon: 'pydantic', categories: ['Backend & APIs'] }, { name: 'Go', icon: 'go', categories: ['Backend & APIs'] }, { name: 'REST APIs', icon: 'openapiinitiative', categories: ['Backend & APIs'] }, { name: 'SOAP APIs', icon: '', categories: ['Backend & APIs'] }, { name: 'Microservices', icon: '', categories: ['Backend & APIs'] },
+  { name: 'JavaScript', icon: 'javascript', categories: ['Frontend'] }, { name: 'TypeScript', icon: 'typescript', categories: ['Frontend'] }, { name: 'React', icon: 'react', categories: ['Frontend'] }, { name: 'Redux', icon: 'redux', categories: ['Frontend'] }, { name: 'Vue.js', icon: 'vuedotjs', categories: ['Frontend'] }, { name: 'Nuxt', icon: 'nuxt', categories: ['Frontend'] }, { name: 'HTML', icon: 'html5', categories: ['Frontend'] }, { name: 'CSS', icon: 'css3', categories: ['Frontend'] }, { name: 'jQuery', icon: 'jquery', categories: ['Frontend'] }, { name: 'PrimeVue', icon: 'primevue', categories: ['Frontend'] }, { name: 'Pinia', icon: 'pinia', categories: ['Frontend'] },
+  { name: 'PostgreSQL', icon: 'postgresql', categories: ['Data & Infrastructure'] }, { name: 'MySQL', icon: 'mysql', categories: ['Data & Infrastructure'] }, { name: 'Redis', icon: 'redis', categories: ['Data & Infrastructure'] }, { name: 'Docker', icon: 'docker', categories: ['Data & Infrastructure'] }, { name: 'Amazon S3', icon: 'amazons3', categories: ['Data & Infrastructure'] }, { name: 'Amazon SQS', icon: 'amazonsqs', categories: ['Data & Infrastructure'] }, { name: 'Amazon EC2', icon: 'amazonec2', categories: ['Data & Infrastructure'] },
+  { name: 'Git', icon: 'git', categories: ['Dev Tools'] }, { name: 'GitHub Actions', icon: 'githubactions', categories: ['Dev Tools'] }, { name: 'Jenkins', icon: 'jenkins', categories: ['Dev Tools'] }, { name: 'Cloudflare Pages', icon: 'cloudflare', categories: ['Dev Tools'] }, { name: 'ngrok', icon: 'ngrok', categories: ['Dev Tools'] }, { name: 'PHPUnit', icon: '', categories: ['Dev Tools'] }, { name: 'pytest', icon: 'pytest', categories: ['Dev Tools'] }, { name: 'Playwright', icon: 'playwright', categories: ['Dev Tools'] }, { name: 'Swagger', icon: 'swagger', categories: ['Dev Tools'] }, { name: 'Sentry', icon: 'sentry', categories: ['Dev Tools'] }, { name: 'New Relic', icon: 'newrelic', categories: ['Dev Tools'] },
+  { name: 'MCP', icon: '', categories: ['Backend & APIs', 'AI & Agents'] }, { name: 'OpenAI Responses API', icon: 'openai', categories: ['AI & Agents'] }, { name: 'Azure OpenAI', icon: 'openai', categories: ['AI & Agents'] }, { name: 'LangGraph', icon: 'langchain', categories: ['AI & Agents'] }, { name: 'Hermes Agent', icon: 'hermes', categories: ['AI & Agents'] }, { name: 'Codex', icon: '', categories: ['AI & Agents'] }, { name: 'Claude Code', icon: '', categories: ['AI & Agents'] }, { name: 'OpenCode', icon: '', categories: ['AI & Agents'] }, { name: 'GitHub Copilot', icon: 'githubcopilot', categories: ['AI & Agents'] },
 ]
+const selectedTechnologyCategory = ref('All')
+const technologyCategories = computed(() => ['All', 'Backend & APIs', 'Frontend', 'Data & Infrastructure', 'Dev Tools', 'AI & Agents'].map((value, index) => ({ value, label: copy.value.technologyCategories[index]! })))
+const filteredTechnologies = computed(() => selectedTechnologyCategory.value === 'All'
+  ? technologies
+  : technologies.filter(technology => technology.categories.includes(selectedTechnologyCategory.value)))
 
 const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'openapiinitiative', OpenAI: 'openai', Laravel: 'laravel', Go: 'go', Python: 'python', 'Vue.js': 'vuedotjs', React: 'react', Auth0: 'auth0', PrimeVue: 'primevue', UML: 'uml' }
 
@@ -84,9 +93,10 @@ onBeforeUnmount(() => {
         <p class="eyebrow">{{ copy.role }}</p>
         <h1>{{ copy.greeting }}<span>.</span></h1>
         <p class="intro">{{ copy.intro }}</p>
+        <p class="intro intro-questions">{{ copy.introQuestions }}</p>
         <div class="inline-actions">
-          <UButton href="#services" color="primary" variant="solid">{{ copy.projectsCta }}</UButton>
-          <UButton :href="resumeUrl" external color="neutral" variant="outline">{{ copy.resume }}</UButton>
+          <UButton :href="resumeUrl" external color="primary" variant="solid">{{ copy.resume }}</UButton>
+          <UButton href="#projects" color="neutral" variant="outline">{{ copy.projectsCta }}</UButton>
         </div>
         <UCard class="mission">
           <p class="eyebrow">{{ copy.drives }}</p>
@@ -130,7 +140,7 @@ onBeforeUnmount(() => {
 
     <UContainer id="projects" as="section" class="section">
       <h2>{{ copy.projects }}<span>.</span></h2>
-      <p class="section-intro">{{ copy.projectsIntro }} {{ copy.experienceBefore }} <a class="section-link" href="#experience">{{ copy.experience }}</a> {{ copy.experienceAfter }}</p>
+      <p class="section-intro">{{ copy.projectsIntro }}</p>
       <div class="projects">
         <UCard v-for="project in caseStudies" :key="project.name" as="article" class="project-card">
           <div class="project-copy">
@@ -171,13 +181,18 @@ onBeforeUnmount(() => {
     <UContainer as="section" class="section">
       <h2>{{ copy.technologies }}<span>.</span></h2>
       <p class="section-intro">{{ copy.technologiesIntro }}</p>
+      <div class="technology-filters" role="group" :aria-label="copy.technologyFilters">
+        <button v-for="category in technologyCategories" :key="category.value" type="button" :aria-pressed="selectedTechnologyCategory === category.value" :class="{ 'is-active': selectedTechnologyCategory === category.value }" @click="selectedTechnologyCategory = category.value">
+          {{ category.label }}
+        </button>
+      </div>
       <div class="technology-list">
-        <TechnologyBadge v-for="[name, icon] in technologies" :key="name" :name="name" :icon="icon" />
+        <TechnologyBadge v-for="technology in filteredTechnologies" :key="technology.name" :name="technology.name" :icon="technology.icon" />
       </div>
     </UContainer>
 
     <UContainer id="contact" as="section" class="section contact">
-      <h2>{{ copy.contact }}<span>.</span></h2>
+      <h2>{{ copy.contactHeadline }}<span>.</span></h2>
       <p class="section-intro">{{ copy.contactIntro }}</p>
       <div class="contact-actions">
         <UButton :href="projectInquiry" color="primary" variant="solid" size="lg">{{ copy.discuss }}</UButton>
