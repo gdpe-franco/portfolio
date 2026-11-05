@@ -175,6 +175,7 @@ h2 {
   font-size: .96rem;
   line-height: 1.7;
 }
+.intro-questions { margin-top: 12px; }
 
 .section-intro { margin-bottom: 34px; }
 .section-link { color: var(--ui-primary); text-decoration: underline; text-underline-offset: .18em; }
@@ -265,6 +266,11 @@ h2 {
 .technology-list { max-width: 850px; margin-top: 32px; }
 .technology-list .technology-badge { gap: 7px; color: var(--ui-text); background: var(--ui-bg-accented); font-size: .78rem; }
 .technology-list .technology-icon { width: 17px; height: 17px; }
+.technology-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.technology-filters button { padding: 6px 10px; border: 1px solid var(--ui-border); border-radius: 5px; color: var(--ui-text-muted); background: transparent; font: inherit; font-size: .72rem; cursor: pointer; }
+.technology-filters button:hover,
+.technology-filters button.is-active { color: var(--ui-text); background: var(--ui-bg-accented); }
+.technology-filters button:focus-visible { outline: 2px solid var(--ui-primary); outline-offset: 2px; }
 
 .contact { padding-bottom: 105px; }
 .footer { padding-block: 24px 36px; display: flex; justify-content: space-between; border-top: 1px solid var(--ui-border); color: var(--ui-text-muted); font-size: .71rem; }
@@ -274,7 +280,8 @@ h2 {
 .source-link { margin-top: 10px; }
 .case-study-context { max-width: 760px; margin: 70px 0 42px; }
 .case-study-context > .eyebrow,
-.case-study-details .eyebrow { color: var(--ui-primary); }
+.case-study-details .eyebrow,
+.case-study-result .eyebrow { color: var(--ui-primary); }
 .case-study-context > p:last-child,
 .case-study-details section > p:last-child,
 .case-study-result > p:last-child { margin-bottom: 0; color: var(--ui-text-muted); font-size: .9rem; line-height: 1.75; }

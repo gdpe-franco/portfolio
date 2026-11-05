@@ -11,25 +11,29 @@ export default {
       "Contact"
     ],
     "role": "FULL-STACK SOFTWARE ENGINEER · INDEPENDENT DEVELOPER",
-    "intro": "I’m an engineer who enjoys understanding systems in context: the custom workflows behind them and the people who rely on them. I build reliable software that fits the way work actually happens and makes it simpler.",
-    "projectsCta": "See services →",
+    "intro": "I'm an engineer who enjoys understanding systems in context: the custom workflows behind them and the people who rely on them.",
+    "introQuestions": "Give me a problem, and I'll start asking questions: what's the bigger picture, what are our options, and which trade-offs make sense?",
+    "projectsCta": "Explore projects →",
     "resume": "View resume →",
     "drives": "↗ WHAT DRIVES ME",
-    "drivesText": "Making thoughtful technical choices, working generously with others, and building software that remains cared for over time.",
+    "drivesText": "Taking ownership, collaborating generously with others, and caring about the code and what happens after it's shipped.",
     "about": "About me",
     "experience": "Experience",
-    "experienceIntro": "Professional experience across SaaS, logistics, integrations, and internal tools.",
+    "experienceIntro": "Building and supporting software across SaaS, logistics, APIs, and integrations.",
     "viewResume": "View full resume →",
     "projects": "Projects",
-    "projectsIntro": "Each project includes a concise case study of the system, trade-offs, and delivery.",
+    "projectsIntro": "Some things I've built, the problems behind them, and the decisions that shaped their design.",
     "experiment": "Experiment",
     "services": "Services",
-    "servicesIntro": "I take on focused work involving integrations, automation, backend systems, and internal tools.",
+    "servicesIntro": "I offer integrations, automation, backend systems, and internal tools.",
     "technologies": "Technologies I use",
-    "technologiesIntro": "A mix of what I use often and things I’m getting better at.",
+    "technologiesIntro": "Tools I've worked with, from everyday essentials to newer technologies I'm exploring.",
+    "technologyFilters": "Filter technologies by category",
+    "technologyCategories": ["All", "Backend & APIs", "Frontend", "Data & Infrastructure", "Dev Tools", "AI & Agents"],
     "contact": "Contact",
-    "contactIntro": "Have a project in mind, or want to talk about working together?",
-    "discuss": "Discuss a project →",
+    "contactHeadline": "Let's talk",
+    "contactIntro": "Have an opportunity, an interesting problem, or something worth building together? I'd love to hear about it.",
+    "discuss": "Get in touch →",
     "github": "Open on GitHub",
     "light": "Switch to light mode",
     "dark": "Switch to dark mode",
@@ -42,35 +46,33 @@ export default {
     "navigation": "Main navigation",
     "portraitAlt": "Portrait of Guada Franco",
     "viewProject": "View project",
-    "experienceBefore": "My professional experience is described separately in the",
-    "experienceAfter": "section."
   },
   "services": [
     {
       "name": "APIs & integrations",
       "level": "Primary focus",
-      "text": "Connect e-commerce, payment, shipping, invoicing, and internal systems through APIs and webhooks."
+      "text": "Connect products and services through APIs, webhooks, and custom integrations."
     },
     {
       "name": "Automation & data",
       "level": "Focused offer",
-      "text": "Automate repetitive reporting, CSV, spreadsheet, and data-cleanup tasks."
+      "text": "Automate repetitive workflows, reporting, and data processing."
     },
     {
       "name": "Backend & web systems",
       "level": "Primary focus",
-      "text": "Build and maintain APIs and web systems with PHP, TypeScript, JavaScript, Go, Python or other languages as appropriate for the project."
+      "text": "Build, extend, and maintain APIs, backend services, and web applications."
     },
     {
       "name": "Custom tools & AI",
       "level": "Focused offer",
-      "text": "Build small internal tools and practical AI-assisted workflows for specific needs."
+      "text": "Build internal tools and explore practical AI integrations for existing workflows."
     }
   ],
   "experiments": [
     {
       "name": "Cat Gesture Meme Tracker",
-      "text": "A browser experiment that uses MediaPipe to respond to detected hand gestures with cat reactions.",
+      "text": "A browser experiment that detects hand gestures and responds with cat reactions using MediaPipe.",
       "repo": "https://github.com/gdpe-franco/gesture-meme-tracker",
       "stack": [
         [
@@ -96,7 +98,7 @@ export default {
       "period": "Sep 2025 – Jul 2026",
       "workMode": "Remote",
       "location": "Querétaro, México",
-      "summary": "Owned Symfony features from design through production support for a SaaS platform serving 8,000+ organizations. Authored and presented technical design proposals, and designed and shipped an internal MCP integration to production on OpenAI’s Responses API.",
+      "summary": "Developed Symfony features for a SaaS platform serving 8,000+ organizations, from technical design through production support. Contributed to architecture discussions and extended an existing course-recommendation chatbot: its RAG/vector-store flow remained separate from a new MCP flow for internal API questions.",
       "tags": [
         "Symfony",
         "APIs",
@@ -111,7 +113,7 @@ export default {
       "period": "Aug 2023 – Sep 2025",
       "workMode": "Remote",
       "location": "Monterrey, México",
-      "summary": "Owned the Laravel 5.2 to 6.x monolith migration version by version for a logistics platform serving 1,000+ active merchants. Built and publicly shipped API v2 for shipment rates and labels with a staged rollout; implemented SAML 2.0 SSO with Auth0 for enterprise customers; maintained and refactored marketplace and carrier integrations.",
+      "summary": "Worked on backend systems, APIs, and integrations for a logistics platform serving 1,000+ active merchants. Migrated a Laravel monolith from 5.2 to 6.x, redesigned shipment workflows through API v2, implemented enterprise SSO, and maintained carrier and marketplace integrations.",
       "tags": [
         "Laravel",
         "React",
@@ -128,7 +130,7 @@ export default {
       "period": "2022 – 2023",
       "workMode": "On-site",
       "location": "Querétaro, México",
-      "summary": "Worked on system analysis, UI implementation, Laravel APIs, and documentation.",
+      "summary": "Contributed to system analysis, interface design, Laravel APIs, and technical documentation.",
       "tags": [
         "Laravel",
         "PrimeVue",
@@ -137,9 +139,9 @@ export default {
     }
   ],
   "about": [
-    "My work spans user-facing interfaces, APIs, data, and the practical details that make a product work well as a whole. I build integrations and internal tools that support daily work.",
-    "Backend engineering is where I feel most at home, especially background jobs, queues and retries, observability, authentication, and clear service boundaries. At the same time, I care about the whole development lifecycle, from understanding a problem to shipping and supporting a solution.",
-    "I use AI agents, MCP servers, and coding assistants in my daily work, and I’m also building agent-based applications. I find this new wave of tools fascinating."
+    "My work spans APIs, data, integrations, and user-facing applications. I enjoy connecting the pieces of a product, understanding how they interact, and identifying where changes can make a meaningful difference.",
+    "Backend engineering is where I feel most at home, particularly with asynchronous workflows, authentication, service boundaries, and system integrations. I enjoy working across the development lifecycle, from exploring requirements and designing solutions to shipping and supporting them.",
+    "Lately, I've been exploring AI agents, MCP, and agent-based applications. I'm particularly interested in how these technologies can enhance existing products and create new possibilities as AI becomes part of everyday software."
   ],
   "projectLabels": {
     "navigation": "Project navigation",
@@ -147,7 +149,7 @@ export default {
     "source": "Source on GitHub",
     "contextLabel": "Context & scope",
     "approachLabel": "Approach",
-    "decisionsLabel": "Key decisions",
+    "decisionsLabel": "Decisions & trade-offs",
     "design": "System design",
     "resultLabel": "Result",
     "technologies": "Technologies",
@@ -158,7 +160,7 @@ export default {
   "projects": {
     "ai-coding-agent-pipeline": {
       "kind": "AI orchestration & developer tooling",
-      "description": "A chat-based platform that turns natural-language requests into small web applications through planning, code generation, and review agents, with persistent project context and bounded revisions.",
+      "description": "A platform that turns natural-language requests into web applications through coordinated planning, coding, and review agents.",
       "context": "Build a platform where people can describe a small web application, inspect how it is generated, and request changes in the same project conversation. The current implementation generates static HTML, CSS, and JavaScript; arbitrary repository modification and generated backend execution are out of scope.",
       "approach": "A Vue and TypeScript chat sends requests to a FastAPI service, which persists work in PostgreSQL for a separate LangGraph worker. Planner, Coder, and Reviewer agents use Azure OpenAI; approved files are published as a preview. For local deployments, ngrok can expose the application while Cloudflare Quick Tunnel provides a separate hostname for generated previews.",
       "decisions": "Each agent returns structured, validated output. The Reviewer can send bounded feedback to the Coder; when attempts run out or the case needs escalation, the run pauses for user guidance. A separate worker keeps long model calls out of HTTP requests, while PostgreSQL stores application state, queue work, history, and graph checkpoints. The preview uses a separate origin from the signed-in application.",
@@ -167,7 +169,7 @@ export default {
     },
     "cfdi-4-generator": {
       "kind": "Integration & document processing",
-      "description": "A focused Laravel technical test that converts structured JSON into CFDI 4.0 Ingreso XML and validates it locally.",
+      "description": "A Laravel application that transforms structured JSON into CFDI 4.0 XML and validates the generated documents locally.",
       "context": "Generate a CFDI 4.0 Ingreso document from structured invoice data without treating a specification-heavy task as a string-formatting exercise. It supports one IVA traslado per concepto; PAC integration, timbrado, real certificates, signatures, APIs, and a user interface are deliberately outside its scope.",
       "approach": "An Artisan command reads JSON, applies input, SAT catalogue, and filling-guide checks, calculates amounts, builds XML with DOMDocument, writes the output, and validates it locally.",
       "decisions": "Amounts stay as decimal strings and use bcmath rather than PHP floats. Validation is layered: input and catalogue gates, local SAT XSD validation, then advisory structural checks.",
@@ -176,7 +178,7 @@ export default {
     },
     "book-management-system": {
       "kind": "Internal tool",
-      "description": "A local book-management dashboard with role-based access, append-only audit history, and live notifications.",
+      "description": "A book-management dashboard with role-based access, event-driven auditing, and real-time notifications.",
       "context": "Managing book records is only part of the workflow. Changes also need clear authorization, a dependable history, and timely feedback. Books can be created, updated, and soft-deleted; admins and superadmins manage books and view history, while only superadmins can list users.",
       "approach": "The Vue dashboard calls a versioned Laravel API. Laravel owns users and books, then publishes committed book changes to Redis Streams. A separate audit service stores each event and notifies connected dashboards through Socket.IO.",
       "decisions": "Laravel is the single security authority: Sanctum issues and validates tokens, and Policies enforce access. Redis Streams keeps audit work separate from book writes; unique event IDs make retries safe. Each service accesses only its own MySQL database.",
@@ -185,7 +187,7 @@ export default {
     },
     "geographical-keys": {
       "kind": "Public data application",
-      "description": "A public Laravel application for browsing Mexico’s federal entities and municipalities through the INEGI Geo Catalog.",
+      "description": "A Laravel application for exploring Mexico's states and municipalities through INEGI's geographical catalog.",
       "context": "Make INEGI’s geographic catalogue practical to browse without turning a small public application into a general-purpose geographic platform. The scope is Mexico only: the application persists the 32 federal entities, while municipality data is retrieved after a visitor selects a state.",
       "approach": "An Artisan command reads INEGI’s state catalog and upserts records by state code. A Vue data table offers search, sorting, and pagination; selecting a state fetches its municipalities through a versioned Laravel endpoint.",
       "decisions": "External INEGI responses are validated and mapped through readonly DTOs before use. A unique state-code index and upsert make imports safe to repeat. Municipalities stay live-only and are cached in browser storage for one day instead of being persisted.",

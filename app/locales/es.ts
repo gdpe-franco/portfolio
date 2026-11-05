@@ -13,28 +13,32 @@ export default {
       "Contacto"
     ],
     "role": "INGENIERA DE SOFTWARE FULL-STACK · DESARROLLADORA INDEPENDIENTE",
-    "intro": "Soy una ingeniera a quien le gusta entender los sistemas en contexto: los flujos de trabajo que los sostienen y las personas que dependen de ellos. Construyo software confiable que se adapta a la forma en que realmente ocurre el trabajo y lo vuelve más sencillo.",
-    "projectsCta": "Ver servicios →",
+    "intro": "Soy una ingeniera a quien le gusta entender los sistemas en contexto: los flujos de trabajo que los sostienen y las personas que dependen de ellos.",
+    "introQuestions": "Dame un problema y empezaré a hacer preguntas: ¿cuál es el panorama completo, qué alternativas tenemos y qué compromisos tienen sentido?",
+    "projectsCta": "Explorar proyectos →",
     "resume": "Ver currículum →",
     "drives": "↗ LO QUE ME MUEVE",
-    "drivesText": "Tomar decisiones técnicas cuidadosas, trabajar con generosidad y construir software que siga recibiendo atención con el tiempo.",
+    "drivesText": "Hacerme responsable de mi trabajo, colaborar y compartir conocimientos con los demás, y cuidar el código y lo que sucede después de llevarlo a producción.",
     "light": "Cambiar a modo claro",
     "dark": "Cambiar a modo oscuro",
     "highlights": "Aspectos destacados del portafolio",
     "about": "Sobre mí",
     "experience": "Experiencia",
-    "experienceIntro": "Experiencia profesional en SaaS, logística, integraciones y herramientas internas.",
+    "experienceIntro": "Desarrollo y mantenimiento de software para plataformas SaaS, logística, APIs e integraciones.",
     "viewResume": "Ver currículum completo →",
     "projects": "Proyectos",
-    "projectsIntro": "Cada proyecto incluye un estudio conciso del sistema, sus decisiones y su entrega.",
+    "projectsIntro": "Algunas cosas que he construido, los problemas detrás de ellas y las decisiones que dieron forma a su diseño.",
     "experiment": "Experimento",
     "services": "Servicios",
-    "servicesIntro": "Acepto trabajo enfocado en integraciones, automatización, sistemas backend y herramientas internas.",
+    "servicesIntro": "Ofrezco integraciones, automatización, sistemas backend y herramientas internas.",
     "technologies": "Tecnologías que uso",
-    "technologiesIntro": "Una mezcla de lo que uso con frecuencia y lo que sigo aprendiendo.",
+    "technologiesIntro": "Herramientas con las que he trabajado, desde las que uso habitualmente hasta nuevas tecnologías que sigo explorando.",
+    "technologyFilters": "Filtrar tecnologías por categoría",
+    "technologyCategories": ["Todas", "Backend y APIs", "Frontend", "Datos e infraestructura", "Herramientas de desarrollo", "IA y agentes"],
     "contact": "Contacto",
-    "contactIntro": "¿Tienes un proyecto en mente o quieres hablar sobre trabajar juntas?",
-    "discuss": "Hablemos de un proyecto →",
+    "contactHeadline": "Hablemos",
+    "contactIntro": "¿Tienes una oportunidad, un problema interesante o algo que valga la pena construir en conjunto? Me gustaría conocerlo.",
+    "discuss": "Contactarme →",
     "github": "Abrir en GitHub",
     "years": "años",
     "months": "meses",
@@ -44,35 +48,33 @@ export default {
     "navigation": "Navegación principal",
     "portraitAlt": "Retrato de Guada Franco",
     "viewProject": "Ver proyecto",
-    "experienceBefore": "Mi experiencia profesional se describe por separado en la sección de",
-    "experienceAfter": "."
   },
   "services": [
     {
       "name": "APIs e integraciones",
       "level": "Enfoque principal",
-      "text": "Conecto sistemas de comercio electrónico, pagos, envíos, facturación e internos mediante APIs y webhooks."
+      "text": "Conecto productos y servicios mediante APIs, webhooks e integraciones personalizadas."
     },
     {
       "name": "Automatización y datos",
       "level": "Servicio enfocado",
-      "text": "Automatizo reportes repetitivos, CSV, hojas de cálculo y tareas de limpieza de datos."
+      "text": "Automatizo procesos repetitivos, reportes y procesamiento de datos."
     },
     {
       "name": "Backend y sistemas web",
       "level": "Enfoque principal",
-      "text": "Desarrollo y mantengo APIs y sistemas web con PHP, TypeScript, JavaScript, Go, Python u otros lenguajes según el proyecto."
+      "text": "Desarrollo, amplío y mantengo APIs, servicios backend y aplicaciones web."
     },
     {
       "name": "Herramientas personalizadas e IA",
       "level": "Servicio enfocado",
-      "text": "Construyo herramientas internas pequeñas y flujos prácticos asistidos por IA para necesidades específicas."
+      "text": "Desarrollo herramientas internas y exploro integraciones prácticas de IA para procesos existentes."
     }
   ],
   "experiments": [
     {
       "name": "Cat Gesture Meme Tracker",
-      "text": "Un experimento web que usa MediaPipe para responder a gestos detectados con reacciones de gatos.",
+      "text": "Un experimento web que detecta gestos con las manos y responde con reacciones de gatos mediante MediaPipe.",
       "repo": "https://github.com/gdpe-franco/gesture-meme-tracker",
       "stack": [
         [
@@ -98,7 +100,7 @@ export default {
       "period": "sep 2025 – jul 2026",
       "workMode": "Remoto",
       "location": "Querétaro, México",
-      "summary": "Me encargué de funcionalidades con Symfony desde el diseño hasta el soporte en producción para una plataforma SaaS usada por más de 8,000 organizaciones. Redacté y presenté propuestas de diseño técnico, y diseñé y llevé a producción una integración interna de MCP con la API Responses de OpenAI.",
+      "summary": "Desarrollé funcionalidades con Symfony para una plataforma SaaS utilizada por más de 8,000 organizaciones, desde el diseño técnico hasta el soporte en producción. Participé en discusiones de arquitectura y amplié un chatbot existente de recomendaciones de cursos: su flujo con RAG y base vectorial siguió separado del nuevo flujo con MCP para consultas a APIs internas.",
       "tags": [
         "Symfony",
         "APIs",
@@ -113,7 +115,7 @@ export default {
       "period": "ago 2023 – sep 2025",
       "workMode": "Remoto",
       "location": "Monterrey, México",
-      "summary": "Lideré la migración del monolito Laravel de 5.2 a 6.x, versión por versión, para una plataforma logística usada por más de 1,000 comercios activos. Construí y publiqué la API v2 para cotizaciones y etiquetas de envío con un despliegue gradual; implementé SSO SAML 2.0 con Auth0 para clientes empresariales; mantuve y refactoricé integraciones con marketplaces y transportistas.",
+      "summary": "Trabajé en sistemas backend, APIs e integraciones para una plataforma logística con más de 1,000 comercios activos. Migré un monolito Laravel de 5.2 a 6.x, rediseñé flujos de envíos mediante la API v2, implementé SSO empresarial y mantuve integraciones con paqueterías y marketplaces.",
       "tags": [
         "Laravel",
         "React",
@@ -130,7 +132,7 @@ export default {
       "period": "2022 – 2023",
       "workMode": "Presencial",
       "location": "Querétaro, México",
-      "summary": "Trabajé en análisis de sistemas, implementación de interfaces, APIs Laravel y documentación.",
+      "summary": "Participé en análisis de sistemas, diseño de interfaces, desarrollo de APIs con Laravel y documentación técnica.",
       "tags": [
         "Laravel",
         "PrimeVue",
@@ -139,9 +141,9 @@ export default {
     }
   ],
   "about": [
-    "Mi trabajo abarca interfaces para usuarios, APIs, datos y los detalles prácticos que hacen que un producto funcione como un todo. Construyo integraciones y herramientas internas que apoyan el trabajo diario.",
-    "El backend es donde me siento más cómoda, especialmente con trabajos en segundo plano, queues y reintentos, observabilidad, autenticación y límites claros entre servicios. Al mismo tiempo, me importa todo el ciclo de desarrollo, desde entender un problema hasta entregar y acompañar una solución.",
-    "Uso agentes de IA, servidores MCP y asistentes de programación en mi trabajo diario, y también estoy construyendo aplicaciones basadas en agentes. Esta nueva ola de herramientas me parece fascinante."
+    "Mi trabajo abarca APIs, datos, integraciones y aplicaciones orientadas a usuarios. Disfruto conectar las distintas piezas de un producto, entender cómo interactúan e identificar dónde un cambio puede generar una diferencia significativa.",
+    "El desarrollo backend es donde me siento más cómoda, especialmente con procesos asíncronos, autenticación, límites entre servicios e integraciones. Disfruto participar en todo el ciclo de desarrollo, desde analizar requerimientos y diseñar soluciones hasta llevarlas a producción y darles seguimiento.",
+    "Últimamente he estado explorando agentes de IA, MCP y aplicaciones basadas en agentes. Me interesa especialmente cómo estas tecnologías pueden potenciar productos existentes y abrir nuevas posibilidades a medida que la IA se integra al software cotidiano."
   ],
   "projectLabels": {
     "navigation": "Navegación del proyecto",
@@ -149,7 +151,7 @@ export default {
     "source": "Código fuente en GitHub",
     "contextLabel": "Contexto y alcance",
     "approachLabel": "Enfoque",
-    "decisionsLabel": "Decisiones clave",
+    "decisionsLabel": "Decisiones y trade-offs",
     "design": "Diseño del sistema",
     "resultLabel": "Resultado",
     "technologies": "Tecnologías",
@@ -160,7 +162,7 @@ export default {
   "projects": {
     "ai-coding-agent-pipeline": {
       "kind": "Orquestación de IA y herramientas para desarrollo",
-      "description": "Una plataforma conversacional que convierte solicitudes en lenguaje natural en pequeñas aplicaciones web mediante agentes de planificación, generación de código y revisión, con contexto persistente y revisiones limitadas.",
+      "description": "Una plataforma que convierte solicitudes en lenguaje natural en aplicaciones web mediante agentes coordinados de planificación, programación y revisión.",
       "context": "Crear una plataforma donde las personas describan una aplicación web pequeña, inspeccionen cómo se genera y soliciten cambios dentro de la misma conversación del proyecto. La implementación actual genera HTML, CSS y JavaScript estáticos; modificar repositorios arbitrarios y ejecutar backends generados quedan fuera del alcance.",
       "approach": "Un chat en Vue y TypeScript envía solicitudes a un servicio FastAPI, que guarda el trabajo en PostgreSQL para que lo procese un worker independiente con LangGraph. Los agentes Planner, Coder y Reviewer usan Azure OpenAI; los archivos aprobados se publican en una vista previa. Para despliegues locales, ngrok puede exponer la aplicación y Cloudflare Quick Tunnel ofrece un hostname separado para las vistas previas generadas.",
       "decisions": "Cada agente devuelve una salida estructurada y validada. Reviewer puede enviar observaciones acotadas a Coder; cuando se agotan los intentos o hace falta escalar el caso, la ejecución espera orientación de la persona. Un worker independiente mantiene las llamadas largas al modelo fuera de las solicitudes HTTP, mientras PostgreSQL guarda el estado, la cola, el historial y los checkpoints del grafo. La vista previa usa un origen distinto al de la aplicación con sesión iniciada.",
@@ -169,7 +171,7 @@ export default {
     },
     "cfdi-4-generator": {
       "kind": "Integración y procesamiento de documentos",
-      "description": "Una prueba técnica enfocada en Laravel que convierte JSON estructurado en XML de ingreso CFDI 4.0 y lo valida localmente.",
+      "description": "Una aplicación Laravel que transforma JSON estructurado en XML CFDI 4.0 y valida los documentos generados localmente.",
       "context": "Generar un documento CFDI 4.0 de ingreso a partir de datos estructurados sin tratar una tarea basada en especificaciones como un simple ejercicio de formato.",
       "approach": "Un comando de Artisan lee JSON, aplica validaciones de entrada, catálogos del SAT y guía de llenado, calcula importes, construye XML con DOMDocument y lo valida localmente.",
       "decisions": "Los importes se mantienen como cadenas decimales y usan bcmath en lugar de flotantes de PHP. La validación se divide en entradas, catálogos, XSD local y comprobaciones estructurales.",
@@ -178,7 +180,7 @@ export default {
     },
     "book-management-system": {
       "kind": "Herramienta interna",
-      "description": "Un panel local para administrar libros y sus cambios, con acceso por roles, historial de auditoría inmutable y notificaciones en vivo.",
+      "description": "Un dashboard de gestión de libros con acceso por roles, auditoría basada en eventos y notificaciones en tiempo real.",
       "context": "Una herramienta interna para mantener un catálogo de libros y dar seguimiento a cambios importantes con controles claros.",
       "approach": "La aplicación separa la gestión del catálogo, el historial de auditoría y las notificaciones para que cada cambio pueda revisarse y comunicarse.",
       "decisions": "La autorización por roles y el historial inmutable protegen las operaciones sensibles. Un servicio Node.js publica notificaciones y Redis mantiene la comunicación entre procesos.",
@@ -187,7 +189,7 @@ export default {
     },
     "geographical-keys": {
       "kind": "Aplicación de datos públicos",
-      "description": "Una aplicación pública para consultar entidades federativas y municipios de México mediante el Catálogo Geoestadístico del INEGI.",
+      "description": "Una aplicación Laravel para explorar los estados y municipios de México mediante el catálogo geográfico del INEGI.",
       "context": "Convertir un catálogo público de datos geográficos en una herramienta clara para consultar la estructura territorial de México.",
       "approach": "La aplicación importa y normaliza los datos, los almacena con relaciones explícitas y expone una interfaz para explorarlos por niveles.",
       "decisions": "El modelo relacional conserva la jerarquía entre entidades y municipios. La interfaz separa la consulta de datos de la presentación para mantener el flujo sencillo.",
