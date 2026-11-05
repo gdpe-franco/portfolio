@@ -9,7 +9,7 @@ if (!caseStudy) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 
-const projectText = computed(() => ({ ...messages.value.projectLabels, ...messages.value.projects[caseStudy.slug as keyof typeof messages.value.projects] }))
+const projectText = computed(() => ({ ...messages.value.projectLabels, ...messages.value.projects[caseStudy.slug] }))
 
 const colorMode = useColorMode()
 const theme = computed(() => colorMode.value === 'dark' ? 'dark' : 'light')

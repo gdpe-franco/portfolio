@@ -1,41 +1,40 @@
-# Guada Franco Portfolio
+# Guada Franco’s Portfolio
 
-A static-first portfolio for Guada Franco, a full-stack software engineer and independent developer.
+My bilingual portfolio for sharing my projects, experience, and the way I approach software engineering. It’s built with Nuxt, Vue, and TypeScript, and deployed as a static site on Cloudflare Pages.
 
-## Technology
+## Run locally
 
-Nuxt, Vue, TypeScript, and CSS. The site generates static output for Cloudflare Pages.
-
-## Local development
-
-Docker is the recommended local setup in this workspace because Node is not installed on the host.
+With Docker Compose:
 
 ```sh
 docker compose up portfolio
 ```
 
-Open http://localhost:3000.
+Open <http://localhost:3000>.
 
-To validate the production static build locally:
+With Node.js 22 and npm:
 
 ```sh
-docker compose up --build preview
+npm ci
+npm run dev
 ```
 
-Open http://localhost:8080.
-
-## Quality checks
+## Checks
 
 ```sh
 npm run check
 ```
 
-This runs linting, type checking, and static generation. The production Docker build runs the same command from a clean dependency install.
+This runs linting, type checking, static generation, and generated-page tests. CI also checks the diagrams and smoke-tests the production preview, including its 404 response.
 
-GitHub Actions runs the same checks for pull requests to `main` and for merged changes on `main`.
+## Diagrams
+
+After editing a PlantUML source, regenerate its light and dark SVGs with:
+
+```sh
+docker compose run --rm diagrams
+```
 
 ## Deployment
 
-Cloudflare Pages deploys the static output through Git integration. CI validates changes before they merge into protected `main`.
-
-For the project context, intended experience, and deferred scope, see [PROJECT.md](PROJECT.md). For contribution guidance, see [AGENTS.md](AGENTS.md).
+Cloudflare Pages deploys the generated static site from the repository.

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { caseStudies as projectData } from '~/data/case-studies'
+import { locales } from '~/locales'
 
-const { messages, localizedPath } = useSiteLocale()
+const { messages, localizedPath, locale } = useSiteLocale()
 const copy = computed(() => messages.value.copy)
+const resumeUrl = computed(() => locales[locale.value].resumeUrl)
 useLocalizedMetadata(computed(() => messages.value.metadata.homeTitle), computed(() => messages.value.metadata.homeDescription))
 
 const hasReachedAbout = ref(false)
@@ -24,11 +26,12 @@ const navigationItems = computed(() => [
   { label: copy.value.nav[3]!, to: '#contact' },
 ])
 
-const experienceStart = new Date(2022, 10, 21)
+const experienceStart = new Date(Date.UTC(2022, 10, 21))
+const experienceToday = useState('experience-today', () => Date.now())
 const experienceDuration = computed(() => {
-  const now = new Date()
-  let months = (now.getFullYear() - experienceStart.getFullYear()) * 12 + now.getMonth() - experienceStart.getMonth()
-  if (now.getDate() < experienceStart.getDate()) months -= 1
+  const now = new Date(experienceToday.value)
+  let months = (now.getUTCFullYear() - experienceStart.getUTCFullYear()) * 12 + now.getUTCMonth() - experienceStart.getUTCMonth()
+  if (now.getUTCDate() < experienceStart.getUTCDate()) months -= 1
 
   const years = Math.floor(months / 12)
   return `${years} ${copy.value.years}, ${months % 12} ${copy.value.months}`
@@ -47,6 +50,7 @@ const experienceIcons: Record<string, string> = { Symfony: 'symfony', APIs: 'ope
 const experiences = computed(() => messages.value.experiences)
 
 onMounted(() => {
+  experienceToday.value = Date.now()
   const updateHeader = () => { hasReachedAbout.value = (document.getElementById('about')?.getBoundingClientRect().top ?? 1) <= 0 }
   updateHeader()
   window.addEventListener('scroll', updateHeader, { passive: true })
@@ -82,7 +86,7 @@ onBeforeUnmount(() => {
         <p class="intro">{{ copy.intro }}</p>
         <div class="inline-actions">
           <UButton href="#services" color="primary" variant="solid">{{ copy.projectsCta }}</UButton>
-          <UButton href="/resume.pdf" external color="neutral" variant="outline">{{ copy.resume }}</UButton>
+          <UButton :href="resumeUrl" external color="neutral" variant="outline">{{ copy.resume }}</UButton>
         </div>
         <UCard class="mission">
           <p class="eyebrow">{{ copy.drives }}</p>
@@ -121,7 +125,7 @@ onBeforeUnmount(() => {
           <div class="tags"><TechnologyBadge v-for="tag in experience.tags" :key="tag" :name="tag" :icon="experienceIcons[tag]" /></div>
         </UCard>
       </div>
-      <UButton class="resume" href="/resume.pdf" external color="neutral" variant="outline">{{ copy.viewResume }}</UButton>
+      <UButton class="resume" :href="resumeUrl" external color="neutral" variant="outline">{{ copy.viewResume }}</UButton>
     </UContainer>
 
     <UContainer id="projects" as="section" class="section">

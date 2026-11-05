@@ -10,14 +10,14 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
-    "check": "npm run lint && npm run typecheck && npm run generate",
+    "check": "npm run lint && npm run typecheck && npm run generate && npm test",
+    "test": "node --test tests/*.test.mjs",
     "render:diagrams": "rm -rf public/diagrams && mkdir -p public/diagrams/light public/diagrams/dark && plantuml -nometadata -tsvg -o ../public/diagrams/light diagrams/*.puml && plantuml -nometadata -DDARK_THEME=1 -tsvg -o ../public/diagrams/dark diagrams/*.puml"
   },
   "dependencies": {
     "@nuxt/ui": "^4.11.1",
     "nuxt": "^4.5.2",
-    "vue": "^3.5.41",
-    "vue-router": "^5.2.0"
+    "vue": "^3.5.41"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.130",

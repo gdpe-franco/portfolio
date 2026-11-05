@@ -2,6 +2,10 @@ node_modules
 .nuxt
 .output
 .git
+.planning
+.env*
+AGENTS.md
+dist
 .agents
 .codex
 npm-debug.log
