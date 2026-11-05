@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 @import "@nuxt/ui";
 
@@ -243,6 +242,8 @@ h2 {
 .project-card { position: relative; min-height: 260px; }
 .project-copy { padding: 22px; }
 .project-description { min-height: 70px; }
+.project-copy .project-stack,
+.experiment-card .project-stack { margin-top: 12px; }
 .tags,
 .technology-list,
 .project-stack { display: flex; flex-wrap: wrap; gap: 9px; }
@@ -252,7 +253,7 @@ h2 {
 .tags .technology-icon,
 .project-stack .technology-icon { width: 13px; height: 13px; }
 .project-stack .technology-badge { gap: 5px; padding: 4px 6px; border-radius: 4px; font-size: .62rem; }
-.project-repo { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; color: var(--ui-text-muted); }
+.project-repo { position: absolute; top: 18px; right: 18px; display: grid; width: 32px; height: 32px; padding: 0; place-items: center; color: var(--ui-text-muted); }
 .project-repo:hover { color: var(--ui-primary); }
 
 .experiments { margin-top: 40px; }
@@ -271,7 +272,9 @@ h2 {
 
 .case-study { padding-block: 70px 110px; }
 .source-link { margin-top: 10px; }
-.case-study-context { max-width: 760px; margin: 70px 0 42px; padding-bottom: 34px; border-bottom: 1px solid var(--ui-border); }
+.case-study-context { max-width: 760px; margin: 70px 0 42px; }
+.case-study-context > .eyebrow,
+.case-study-details .eyebrow { color: var(--ui-primary); }
 .case-study-context > p:last-child,
 .case-study-details section > p:last-child,
 .case-study-result > p:last-child { margin-bottom: 0; color: var(--ui-text-muted); font-size: .9rem; line-height: 1.75; }
@@ -299,6 +302,7 @@ h2 {
 @media (min-width: 1000px) {
   .portrait { width: min(100%, 320px); }
   .system-diagram img { width: min(100%, 520px); margin-inline: auto; }
+  .system-diagram--ai-coding-agent-pipeline img { width: min(100%, 760px); }
   .system-diagram--book-management-system img { width: min(100%, 620px); }
 }
 

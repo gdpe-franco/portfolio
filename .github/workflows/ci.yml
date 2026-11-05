@@ -20,11 +20,17 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
+      - run: docker compose run --rm diagrams
+      - run: git diff --exit-code -- public/diagrams
       - run: docker build --tag portfolio-quality .
+      - name: Smoke-test static preview
+        run: |
+          docker run -d --name portfolio-preview -p 8080:80 portfolio-quality
+          trap 'docker rm -f portfolio-preview >/dev/null 2>&1 || true' EXIT
+          for attempt in $(seq 1 20); do
+            if curl --silent --fail http://localhost:8080/ >/dev/null; then break; fi
+            sleep 1
+          done
+          curl --fail --silent http://localhost:8080/projects/ai-coding-agent-pipeline/ >/dev/null
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' http://localhost:8080/projects/does-not-exist)
+          test "$status" = 404

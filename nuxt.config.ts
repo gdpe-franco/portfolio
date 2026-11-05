@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   modules: ['@nuxt/eslint', '@nuxt/ui'],
+  fonts: {
+    families: [{ name: 'IBM Plex Mono', provider: 'google', global: true, weights: [400, 500, 700], styles: ['normal'], subsets: ['latin', 'latin-ext'] }],
+  },
   css: ['~/assets/css/main.css'],
   colorMode: {
     preference: 'dark',
@@ -27,7 +30,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' }],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=2' },
+      ],
     },
   },
 })
